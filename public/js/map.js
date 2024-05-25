@@ -2,7 +2,7 @@ var map = L.map('map', {
     center: [-3.734073330631159, 125.99983789744495],
     zoom: 5.6,
     // attributionControl: false,
-    zoomControl: false
+    zoomControl: true
     });
 
     new L.bmSwitcher([
@@ -33,6 +33,8 @@ var map = L.map('map', {
           name: ''
         },
       ], { position: 'bottomleft' }).addTo(map);
+
+
 
     // administrasi
     var adminkabkota = L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
