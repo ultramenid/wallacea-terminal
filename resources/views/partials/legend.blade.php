@@ -39,54 +39,11 @@
                 </div>
             </div>
 
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="deforestasi2023legend" style="color: black !important; display:none">
-                <a class="text-xl  ">Deforestasi 2023</a>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-deforestasi2023"></div>
-                    <a class="text-black">Deforestasi</a>
-                </div>
 
-            </div>
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="pbphlegend" style="color: black !important; display:none">
-                <a class="text-xl  ">PBPH</a>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-pbph-ht"></div>
-                    <a class="text-black">PBPH-HT</a>
-                </div>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-pbph-ha"></div>
-                    <a class="text-black">PBPH-HA</a>
-                </div>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-pbph-re"></div>
-                    <a class="text-black">PBPH-RE</a>
-                </div>
 
-            </div>
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="iuplegend" style="color: black !important; display:none">
-                <a class="text-xl  ">Izin Usaha Pertambangan</a>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-iup"></div>
-                    <a class="text-black">Izin Usaha Pertambangan</a>
-                </div>
-            </div>
 
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="hgulegend" style="color: black !important; display:none">
-                <a class="text-xl  ">Hak Guna Usaha</a>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-hgu"></div>
-                    <a class="text-black">Hak Guna usaha</a>
-                </div>
 
-            </div>
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="hutanalamlegend" style="color: black !important; display:none">
-                <a class="text-xl  ">Hutan Alam</a>
-                <div class="flex items-center space-x-2 mt-2">
-                    <div class="h-4 w-4 bg-hutan-alam"></div>
-                    <a class="text-black">Hutan Alam</a>
-                </div>
 
-            </div>
 
             <div class="flex flex-col py-4  text-sm border-b border-simontini" id="katonghabitatlegend" style="color: black !important; display:none">
                 <a class="text-xl  ">Kantong Habitat</a>
@@ -97,18 +54,78 @@
 
             </div>
 
-            <div class="flex flex-col py-4  text-sm border-b border-simontini" id="administrasikabkotalegend" style="color: black !important; display:none">
-                <a class="text-xl  ">Batas Administrasi Kab/Kota</a>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="administrasikabkotalegend" style="color: black !important; display:none">
                 <div class="flex items-center space-x-2 mt-2">
                     <div class="h-4 w-4 border border-black"></div>
                     <a class="text-black">Batas Administrasi Kab/Kota</a>
                 </div>
-
             </div>
-
-
-
-
+            <div class="flex flex-col  text-sm border-b border-simontini" id="pulaubesarlegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="h-4 w-4 border border-black"></div>
+                    <a class="text-black">Pulau Besar Wallacea</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="pulaukecillegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="h-4 w-4 border border-black"></div>
+                    <a class="text-black">Pulau Kecil Wallacea</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="provinsilegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="h-4 w-4 border border-black"></div>
+                    <a class="text-black">Batas Administrasi Provinsi</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="biogegrafilegend" style="color: black !important; display:block">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 border border-b-biogeografi "></div>
+                    <a class="text-black">Garis Biogeografi Wallacea</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="weberlegend" style="color: black !important; display:block">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4  border-dotted border-2 border-t-weber border-b-weber "></div>
+                    <a class="text-black">Garis Wallace & Weber</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="tambanglegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 bg-tambang "></div>
+                    <a class="text-black">Tutupan Tambang</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="adatlegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 bg-adat "></div>
+                    <a class="text-black">Peta Indikatif Wilayah Adat</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="ibbalegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 border border-ibba "></div>
+                    <a class="text-black">IBBA</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="ppkhlegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 border border-ppkh "></div>
+                    <a class="text-black">PPKH</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="iuplegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 border border-iup  "></div>
+                    <a class="text-black">Izin Usaha Pertambangan</a>
+                </div>
+            </div>
+            <div class="flex flex-col  text-sm border-b border-simontini" id="smelterlegend" style="color: black !important; display:none">
+                <div class="flex items-center space-x-2 mt-2">
+                    <div class="w-4 h-4 border border-smelter  "></div>
+                    <a class="text-black">Smelter</a>
+                </div>
+            </div>
         </div>
 
 

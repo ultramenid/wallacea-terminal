@@ -94,6 +94,50 @@
     opacity: 0.5;
 }
 
+.border-b-biogeografi{
+    --tw-border-opacity: 1;
+    border-bottom-color: #e63946;
+}
+
+.border-t-weber{
+    --tw-border-opacity: 1;
+    border-top-color: #6d597a;
+}
+.border-b-weber{
+    --tw-border-opacity: 1;
+    border-bottom-color: #b56576;
+}
+.bg-tambang{
+    background-color: #e76f51;
+    opacity: 0.5;
+}
+.bg-adat{
+    background: repeating-linear-gradient(
+    130deg,
+    #6b705c,
+    #6b705c 1px,
+    white 4px,
+    white 0px
+    );
+}
+
+.border-ibba{
+    border-color: #bb8588;
+}
+
+.border-ppkh{
+    border-color: #9b5de5;
+}
+
+.border-iup{
+    border-color: #e76f51;
+}
+
+.border-smelter{
+    border-color: #bc4749;
+}
+
+
 
 
 
