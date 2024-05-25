@@ -41,7 +41,7 @@ Route::middleware([checkSession::class])->group(function () {
 
 //redirect to dashboard if user has session to dashboard
 Route::middleware([hasSession::class])->group(function () {
-    Route::get('/login', [LoginController::class, 'index']);
+    Route::get('/cms/login', [LoginController::class, 'index']);
 });
 
 //url to logout session
