@@ -17,7 +17,7 @@
             <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">riset</a>
             <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">regulasi</a>
         </div>
-        <div class="overflow overflow-y-auto h-[80vh]">
+        <div class="overflow overflow-y-auto h-[80vh] scrollbar-hide">
             <div class="py-6 flex flex-col gap-2 " x-data="{open:'open1', test:[]}" >
                 <div :class="(open === 'open1') ? 'h-filter overflow-y-auto border-black border px-4 py-1' : 'border-black border px-4 py-1 select-none cursor-pointer'"  @click="open='open1'">
                     <div class="flex w-full justify-between items-center py-1">
