@@ -38,46 +38,30 @@
 
             <div class="mt-16 space-y-3 ">
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">TAMBANG<a>
+                    <a href="{{ route('index', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">HOME<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">HUTAN<a>
+                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">NEWS<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">ENERGI<a>
+                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">RISET<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">KONSERVASI<a>
+                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">AKSI<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">ANALISIS<a>
+                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">REGULASI<a>
                     <p class="border-b border-gray-300"></p>
-                </div>
-                <div class="px-6" x-data="{open:false}">
-                    <div class="flex items-center px-4" @click="open=!open" @clic.away="open=false">
-                        <a class="inline-block text-base leading-5 text-white uppercase">
-                            MULTIMEDIA
-                        </a>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 ml-1 -mb-1 text-white" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div x-show="open" class="mt-3 flex flex-col justify-center px-6 space-y-1 py-2" style="display: none !important;">
-                        <a href="#" class="text-red-500">FOTO</a>
-                        <a href="#" class="text-red-500">VIDEO</a>
-                        <a href="#" class="text-red-500">PODCAST</a>
-                        <a href="#" class="text-red-500">INFOGRAGIS</a>
-                    </div>
-                    <p class="border-b border-gray-300 mt-4"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">BUMI KITA<a>
+                    <a href="{{ route('data', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">DATA<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
+
             </div>
         </div>
     </header>
@@ -89,11 +73,11 @@
                 <img src="{{ asset('assets/logo-wallacea.png') }}" alt="Wallacea Terminal" class="h-12 ">
 
                 <div class="flex gap-12 items-center">
-                    <a href="" class="uppercase text-biru-wallacea">NEWS</a>
+                    <a href="{{ route('index', app()->getlocale() )}}" class="uppercase text-biru-wallacea">NEWS</a>
                     <a href="" class="uppercase text-biru-wallacea">RISET</a>
                     <a href="" class="uppercase text-biru-wallacea">AKSI</a>
                     <a href="" class="uppercase text-biru-wallacea">REGULASI</a>
-                    <a href="" class="uppercase text-biru-wallacea">DATA</a>
+                    <a href="{{ route('data', app()->getlocale() )}}" class="uppercase text-biru-wallacea">DATA</a>
                 </div>
 
                 {{-- <a href="#">

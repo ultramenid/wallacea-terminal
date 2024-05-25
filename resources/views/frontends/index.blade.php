@@ -214,7 +214,7 @@
     <script>
         var map = L.map('map', {
             center: [-2.734073330631159, 122.99983789744495],
-            zoom: 5.6,
+            zoom: 5.4,
             // attributionControl: false,
             zoomControl: false,
             gestureHandling: true
@@ -223,6 +223,18 @@
             detectRetina: true,
             attribution: 'Auriga Nusantara',
             maxNativeZoom: 17
+        }).addTo(map);
+
+        L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
+        layers: 'terminal_wallacea:Garis Biogeografi Wallacea',
+        transparent: true,
+        format: 'image/png'
+        }).addTo(map);
+
+        L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
+        layers: 'terminal_wallacea:Garis Wallace and Weber',
+        transparent: true,
+        format: 'image/png'
         }).addTo(map);
     </script>
 

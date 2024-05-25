@@ -1,16 +1,25 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RisetsController;
 use App\Http\Middleware\checkSession;
 use App\Http\Middleware\hasSession;
+use App\Http\Middleware\setLanguage;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::redirect('/', '/id');
+Route::middleware([setLanguage::class])->group(function () {
+    Route::group(['prefix' => '{lang}'], function () {
+        Route::get('/', [IndexController::class, 'index'])->name('index');
+        Route::get('/data', [DataController::class, 'index'])->name('data');
+    });
+});
+
 
 //redirect to login page if user has no session
 Route::middleware([checkSession::class])->group(function () {
