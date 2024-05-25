@@ -1,24 +1,25 @@
 <!-- navbar -->
     <!-- top sm -->
-    <header x-data="{open: false, searchsm:false}" class="sticky top-0 z-20 ">
+    <header x-data="{open: false, searchsm:false}" class="sticky top-0 z-50 ">
         <div  class="bg-biru-wallacea lg:hidden block py-6">
             <div x-show="!searchsm" class="flex justify-between px-4 items-center">
                 <svg @click="open=true"  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
                 <img src="{{ asset('assets/logo-wallacea-putih.png') }}" alt="papua betahita" class="h-8">
-                <svg @click="searchsm = true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+                {{-- <svg @click="searchsm = true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                </svg>
+                </svg> --}}
+                <div></div>
             </div>
-            <div x-show="searchsm" @click.away="searchsm=false" class="max-w-5xl mx-auto px-4" style="display: none !important;">
+            {{-- <div x-show="searchsm" @click.away="searchsm=false" class="max-w-5xl mx-auto px-4" style="display: none !important;">
                 <form action="#" method="get" class="flex justify-between items-center relative">
                     <input class="border border-white px-4 py-2 bg-gray-200 w-full" type="text" placeholder="Search. . .">
                     <svg  xmlns="http://www.w3.org/2000/svg" class="absolute right-3 h-6 w-6 text-black" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                     </svg>
                 </form>
-            </div>
+            </div> --}}
         </div>
         <div class="fixed w-3/4 h-screen z-30 bg-biru-wallacea inset-0 overflow-y-auto"
         x-transition:enter="transition ease-in-out duration-150"

@@ -205,7 +205,7 @@
                   </svg>
             </div>
         </div>
-        <div id="map" class="h-[80vh] w-full mt-4"></div>
+        <div id="map" class="h-[80vh] w-full mt-4 z-40"></div>
     </div>
 
 
