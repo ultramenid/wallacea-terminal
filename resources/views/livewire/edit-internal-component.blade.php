@@ -77,8 +77,7 @@
                                 <option value="sulawesibarat">Sulawesi Barat</option>
                                 <option value="maluku">Maluku</option>
                                 <option value="malukuutara">Maluku Utara</option>
-                                <option value="gorontalo">gorontalo</option>
-                                <option value="bali">Bali</option>
+                                <option value="gorontalo">Gorontalo</option>
                                 <option value="ntt">Nusa Tenggara Barat</option>
                                 <option value="ntb">Nusa Tenggara Timur</option>
                             </select>
