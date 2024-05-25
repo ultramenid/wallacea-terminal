@@ -21,7 +21,7 @@
             <div class="py-6 flex flex-col gap-2 " x-data="{open:'open1', test:[]}" >
                 <div :class="(open === 'open1') ? 'h-filter overflow-y-auto border-black border px-4 py-1' : 'border-black border px-4 py-1 select-none cursor-pointer'"  @click="open='open1'">
                     <div class="flex w-full justify-between items-center py-1">
-                        <a class="font font-semibold text-sm ">Administration Boundaries</a>
+                        <a class="font font-semibold text-sm ">Territorial</a>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                           </svg>
@@ -40,7 +40,7 @@
                             {{__('Batas Administrasi Provinsi')}}
                         </x-checkbox>
                         <x-checkbox idAttr="biogegrafi" >
-                            {{__('Garis Biogegrafi Wallacea')}}
+                            {{__('Garis Biogeografi Wallacea')}}
                         </x-checkbox>
                         <x-checkbox idAttr="weber" >
                             {{__('Garis Wallace and Weber')}}

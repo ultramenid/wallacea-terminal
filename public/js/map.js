@@ -4,12 +4,13 @@ var map = L.map('map', {
     // attributionControl: false,
     zoomControl: true
     });
-
+    $( "#weber").prop('checked', true);
+    $( "#biogegrafi").prop('checked', true);
     new L.bmSwitcher([
         {
           layer:  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png', {
             detectRetina: true,
-            attribution: 'Auriga Nusantara',
+            attribution: 'Auriga Nusantara - Wallacea Terminal',
             maxNativeZoom: 17}),
           icon: '../assets/esri-satelit.png',
           name: ''
@@ -18,7 +19,7 @@ var map = L.map('map', {
           layer: L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{
             maxZoom: 20,
             subdomains:['mt0','mt1','mt2','mt3'],
-            attribution: 'Auriga Nusantara'
+            attribution: 'Auriga Nusantara - Wallacea Terminal'
         }),
           icon: '../assets/dark.jpeg',
           name: ''
@@ -26,7 +27,7 @@ var map = L.map('map', {
         {
           layer: L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             detectRetina: true,
-            attribution: 'Auriga Nusantara',
+            attribution: 'Auriga Nusantara - Wallacea Terminal',
             maxNativeZoom: 17
         }).addTo(map),
           icon: '../assets/osm.png',
@@ -53,13 +54,13 @@ var map = L.map('map', {
         layers: 'terminal_wallacea:Garis Biogeografi Wallacea',
         transparent: true,
         format: 'image/png'
-    });
+    }).addTo(map);
 
     var weber = L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
         layers: 'terminal_wallacea:Garis Wallace and Weber',
         transparent: true,
         format: 'image/png'
-    });
+    }).addTo(map);
 
     var pulaubesar = L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
         layers: 'terminal_wallacea:Pulau_Besar_Wallacea',
