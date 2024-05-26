@@ -20,7 +20,7 @@
 
     <div class="text-left lg:w-1/4 w-full">
         <label class="text-gray-600 dark:text-gray-300 mr-2 text-sm" >Search </label>
-        <input placeholder="" type="text" class="bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-3 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 text-sm"  wire:model.live.debounce.300ms="search">
+        <input placeholder="" type="text" class="bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-3 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 text-sm"  wire:model.live.debounce.300ms="query">
     </div>
     <div class="flex flex-col py-5">
         <div class="-my-2  sm:-mx-6 lg:-mx-8 ">
@@ -40,6 +40,9 @@
                             </th>
                             <th class="px-4 py-3 bg-gray-50 dark:bg-opacity-10  dark:text-white text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-0">
                                 <a class="hidden sm:block">Category</a>
+                            </th>
+                            <th class="px-4 py-3 bg-gray-50 dark:bg-opacity-10  dark:text-white text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-0">
+                                <a class="hidden sm:block">Sub Category</a>
                             </th>
                             <th  class=" cursor-pointer px-4 py-3 bg-gray-50 dark:bg-opacity-10  dark:text-white text-center font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-0">
                                 <div class=" space-x-1 hidden sm:flex justify-center">
@@ -72,6 +75,9 @@
                             </td>
                             <td class="px-6 py-4 break-words text-sm  text-newgray-700 dark:text-gray-300">
                                 <a>{{ $item->category }}</a>
+                            </td>
+                            <td class="px-6 py-4 break-words text-sm  text-newgray-700 dark:text-gray-300">
+                                <a>{{ $item->subcategory }}</a>
                             </td>
                             <td class=" py-4 break-words text-sm text-center  text-newgray-700 dark:text-gray-300">
 

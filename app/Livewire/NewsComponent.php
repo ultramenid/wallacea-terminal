@@ -9,9 +9,9 @@ use Masmerise\Toaster\Toaster;
 class NewsComponent extends Component
 {
     public $deleteName, $deleteID, $deleter;
-    public  $paginate = 10, $search = '';
+    public  $paginate = 10, $query = '';
      // refresh page on search
-     public function updatedSearch(){
+     public function search(){
         $this->resetPage();
     }
     public function closeDelete(){
@@ -37,10 +37,10 @@ class NewsComponent extends Component
         $this->closeDelete();
     }
     public function getNews(){
-        $sc = '%' . $this->search . '%';
+        $sc = '%' . $this->query . '%';
         try {
             return  DB::table('news')
-                        ->select('id', 'titleID', 'category', 'img', 'status', 'publishdate', 'url')
+                        ->select('id', 'titleID', 'category', 'subcategory', 'img', 'status', 'publishdate', 'url')
                         ->where('titleID', 'like', $sc)
                         ->orderByDesc('publishdate')
                         ->paginate($this->paginate);
