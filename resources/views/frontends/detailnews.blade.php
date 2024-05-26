@@ -10,10 +10,10 @@
     @include('partials.nasional')
 
     {{-- image, title, description --}}
-    <div class="max-w-4xl mx-auto pt-20">
+    <div class="max-w-4xl mx-auto sm:pt-20 ">
         <img src="{{ asset('storage/files/photos/'.$data->img) }}" class=" border-t-4 border-t-kuning " alt="{{ $title }}">
-        <h1 class="text-4xl font-bold mt-8">{{$title}}</h1>
-        <p class="mt-4 text-xl">{{$description}}</p>
+        <h1 class="text-4xl font-bold mt-8 px-4">{{$title}}</h1>
+        <p class="mt-4 text-xl px-4">{{$description}}</p>
     </div>
 
     {{-- content --}}
@@ -28,7 +28,7 @@
 
     <div class="max-w-5xl mx-auto px-4 mt-20">
         <h2 class="text-3xl font-bold">BERITA LAINYA</h2>
-        <div class="flex gap-6 w-full mt-10">
+        <div class="flex sm:flex-row flex-col gap-6 w-full mt-10">
             @foreach ($related as $item)
             <div class="flex flex-col sm:w-6/12 w-full">
                 <div>
