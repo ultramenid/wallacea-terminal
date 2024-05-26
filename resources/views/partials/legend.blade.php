@@ -38,20 +38,12 @@
                     <a class="text-black">Tubuh Air</a>
                 </div>
             </div>
-
-
-
-
-
-
-
             <div class="flex flex-col py-4  text-sm border-b border-simontini" id="katonghabitatlegend" style="color: black !important; display:none">
                 <a class="text-xl  ">Kantong Habitat</a>
                 <div class="flex items-center space-x-2 mt-2">
                     <div class="h-4 w-4 border border-kantonghabitat"></div>
                     <a class="text-black">Kantong Habitat</a>
                 </div>
-
             </div>
 
             <div class="flex flex-col  text-sm border-b border-simontini" id="administrasikabkotalegend" style="color: black !important; display:none">

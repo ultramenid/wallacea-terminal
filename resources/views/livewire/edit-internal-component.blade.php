@@ -70,16 +70,16 @@
                         <label class="w-full"  >
                             <select wire:model='subcategory' class=" mb-6 bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                                 <option value="">Sub Category</option>
-                                <option value="sulawesitengah">Sulawesi Tengah</option>
-                                <option value="sulawesitenggara">Sulawesi Tenggara</option>
-                                <option value="sulawesiutara">Sulawesi Utara</option>
-                                <option value="sulawesitenggara">Sulawesi Tenggara</option>
-                                <option value="sulawesibarat">Sulawesi Barat</option>
-                                <option value="maluku">Maluku</option>
-                                <option value="malukuutara">Maluku Utara</option>
-                                <option value="gorontalo">Gorontalo</option>
-                                <option value="ntt">Nusa Tenggara Barat</option>
-                                <option value="ntb">Nusa Tenggara Timur</option>
+                                <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                                <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                                <option value="Sulawesi Utara">Sulawesi Utara</option>
+                                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                <option value="Sulawesi Barat">Sulawesi Barat</option>
+                                <option value="Maluku">Maluku</option>
+                                <option value="Maluku Utara">Maluku Utara</option>
+                                <option value="Gorontalo">Gorontalo</option>
+                                <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                                <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
                             </select>
                         </label>
                     @endif

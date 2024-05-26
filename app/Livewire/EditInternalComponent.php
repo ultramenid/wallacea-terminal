@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 class EditInternalComponent extends Component
 {
     use WithFileUploads;
-    public $publishdate, $titleID, $titleEN, $descriptionID, $descriptionEN, $contentID, $contentEN, $category, $subcategory, $photo, $uphoto, $isactive=0;
+    public $publishdate, $titleID, $titleEN, $descriptionID, $descriptionEN, $contentID, $contentEN, $category, $subcategory, $photo, $uphoto, $isactive;
     public $isCategory, $idNews;
 
     public function mount($id){
@@ -30,6 +30,7 @@ class EditInternalComponent extends Component
         $this->contentID = $data->contentID;
         $this->contentEN = $data->contentEN ? $data->contentEN : null;
         $this->isCategory = $data->subcategory ? true : false;
+        $this->isactive = $data->status;
         $this->category = $data->category;
         $this->subcategory = $data->subcategory ? $data->subcategory : null;
         $this->uphoto = $data->img;

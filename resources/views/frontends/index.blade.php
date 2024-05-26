@@ -27,22 +27,13 @@
         <a href="#">Internasional</a>
         <a href="#" >Nasional</a>
     </div>
-    <div class="sm:hidden flex gap-4 px-4 overflow-y-auto scrollbar-hide">
-        <div class="py-3  text-sm whitespace-nowrap">
-            Sulawesi Tengah
-        </div>
-        <div class="py-3  text-sm whitespace-nowrap">
-            Sulawesi Tenggara
-        </div>
-        <div class="py-3  text-sm whitespace-nowrap">
-            Maluku
-        </div>
-        <div class="py-3  text-sm whitespace-nowrap">
-            Maluku Utara
-        </div>
-        <div class="py-3  text-sm whitespace-nowrap">
-            Papua
-        </div>
+    <div class="sm:hidden flex justify-center gap-4 px-4 overflow-y-auto scrollbar-hide">
+        @foreach ($subcategory as $item)
+            <div class="py-3  text-sm whitespace-nowrap">
+                {{$item->subcategory}}
+            </div>
+        @endforeach
+
     </div>
     <!-- hero -->
     <div class="max-w-6xl mx-auto flex sm:flex-row flex-col gap-10 mt-12 px-4">
@@ -53,47 +44,29 @@
             <div class="border-b-[0.5px] py-3 border-b-gray-500">
                 Nasional
             </div>
-            <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
-                Sulawesi Tengah
-            </div>
-            <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
-                Sulawesi Tenggara
-            </div>
-            <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
-                Maluku
-            </div>
-            <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
-                Maluku Utara
-            </div>
-            <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
-                Papua
-            </div>
+            @foreach ($subcategory as $item)
+                <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
+                    {{$item->subcategory}}
+                </div>
+            @endforeach
         </div>
         <div class="sm:w-9/12 w-full flex sm:flex-row flex-col gap-6">
-            <div class="flex flex-col">
-                <div>
-                    <img src="assets/example.png" alt="Wallacea Terminal" class="h-72 w-full object-cover object-center">
-                    <p class="text-right text-xss mt-1">Yudi Nofiandi/Auriga Nusantara</p>
+            @foreach ($news as $item)
+                <div class="flex flex-col sm:w-6/12 w-full">
+                    <div>
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="Wallacea Terminal" class="h-72 w-full object-cover object-center">
+                    </div>
+                    <a class="font-light text-sm mt-4">
+                        @php
+                            $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
+                            $date->settings(['formatFunction' => 'translatedFormat']);
+                            echo $date->format('d F Y');
+                        @endphp</h1>
+                    </a>
+                    <a href="#" class="font-bold">{{ $item->title }}</a>
+                    <p class="mt-3 font-light text-sm">{{ $item->description }}</p>
                 </div>
-                <a class="font-light text-sm mt-4">29 Januari 2024</a>
-                <a href="#" class="font-bold">Pemutihan Sawit: Banyak Raksasa, Tak Ada Sawit Masyarakat</a>
-                <p class="mt-3 font-light text-sm">RSPO dituding cuma menjadi alat greenwashing perusahaan-
-                    perusahaan sawit. RSPO merespon dengan mengatakan mereka
-                    kudu hati-hati.</p>
-
-            </div>
-            <div class="flex flex-col">
-                <div>
-                    <img src="assets/example.png" alt="Wallacea Terminal" class="h-72 w-full object-cover object-center">
-                    <p class="text-right text-xss mt-1">Yudi Nofiandi/Auriga Nusantara</p>
-                </div>
-                <a class="font-light text-sm mt-4">29 Januari 2024</a>
-                <a href="#" class="font-bold">Pemutihan Sawit: Banyak Raksasa, Tak Ada Sawit Masyarakat</a>
-                <p class="mt-3 font-light text-sm">RSPO dituding cuma menjadi alat greenwashing perusahaan-
-                    perusahaan sawit. RSPO merespon dengan mengatakan mereka
-                    kudu hati-hati.</p>
-
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- riset -->
@@ -133,7 +106,6 @@
                 <p class="mt-3 font-light text-sm">RSPO dituding cuma menjadi alat greenwashing perusahaan-
                     perusahaan sawit. RSPO merespon dengan mengatakan mereka
                     kudu hati-hati.</p>
-
             </div>
         </div>
     </div>
@@ -198,7 +170,7 @@
     <!-- data / map -->
     <div class="max-w-6xl mx-auto px-4 mt-24">
         <div class="flex items-center gap-2">
-            <a href="#" class="text-4xl font-bold text-biru-wallacea">DATA</a>
+            <a href="{{ route('data', [app()->getLocale()]) }}" class="text-4xl font-bold text-biru-wallacea">DATA</a>
             <div class="rounded-full h-8 w-8 border-2 border-biru flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-4 h-4 ">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
