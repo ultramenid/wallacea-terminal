@@ -95,6 +95,9 @@ class AddEksternalComponent extends Component
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
             return;
+        }elseif($this->isCategory and $this->subcategory = ''){
+            Toaster::error('Sub Category is required!');
+            return;
         }
         return true;
     }

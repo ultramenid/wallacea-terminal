@@ -121,6 +121,9 @@ class EditEksternalComponent extends Component
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
             return;
+        }elseif($this->category =='Nasional' && $this->subcategory = ''){
+            Toaster::error('Sub Category is required!');
+            return;
         }
         return true;
     }

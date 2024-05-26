@@ -115,6 +115,8 @@ class EditInternalComponent extends Component
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
             return;
+        }elseif($this->category == 'Nasional'){
+            dd('ok');
         }
         return true;
     }
