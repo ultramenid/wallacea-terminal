@@ -70,7 +70,12 @@ class AddInternalComponent extends Component
     }
 
     public function manualValidation(){
-        if(strlen($this->titleID) > 120){
+        if($this->category == "Nasional"){
+            if($this->subcategory == '' OR !isset($this->subcategory)){
+                Toaster::error('Sub catergory is required for Nasional!');
+                return;
+            }
+        }elseif(strlen($this->titleID) > 120){
             Toaster::error('Title Indonesia limit 120 character!');
             return;
         }elseif($this->photo == '' ){
@@ -93,9 +98,6 @@ class AddInternalComponent extends Component
             return;
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
-            return;
-        }elseif($this->isCategory and $this->subcategory = ''){
-            Toaster::error('Sub Category is required!');
             return;
         }
         return true;

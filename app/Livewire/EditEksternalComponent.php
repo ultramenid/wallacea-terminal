@@ -18,6 +18,7 @@ class EditEksternalComponent extends Component
     public $isCategory, $idNews;
 
     public function mount($id){
+
         $this->idNews = $id;
         $data = DB::table('news')->where('id', $id)->first();
         $this->publishdate = $data->publishdate;
@@ -26,6 +27,7 @@ class EditEksternalComponent extends Component
         $this->descriptionID = $data->descriptionID;
         $this->descriptionEN = $data->descriptionEN ? $data->descriptionEN : null;
         $this->isCategory = $data->subcategory ? true : false;
+        $this->isCategory = ($data->category == 'Nasional') ? true : false;
         $this->category = $data->category;
         $this->subcategory = $data->subcategory ? $data->subcategory : null;
         $this->uphoto = $data->img;
@@ -96,7 +98,13 @@ class EditEksternalComponent extends Component
     }
 
     public function manualValidation(){
-        if(strlen($this->titleID) > 120){
+
+        if($this->category == "Nasional"){
+            if($this->subcategory == '' OR !isset($this->subcategory)){
+                Toaster::error('Sub catergory is required for Nasional!');
+                return;
+            }
+        }elseif(strlen($this->titleID) > 120){
             Toaster::error('Title Indonesia limit 120 character!');
             return;
         }elseif($this->titleID == '' ){
@@ -120,9 +128,6 @@ class EditEksternalComponent extends Component
             return;
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
-            return;
-        }elseif($this->category =='Nasional' && $this->subcategory = ''){
-            Toaster::error('Sub Category is required!');
             return;
         }
         return true;

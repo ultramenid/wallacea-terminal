@@ -30,6 +30,7 @@ class EditInternalComponent extends Component
         $this->contentID = $data->contentID;
         $this->contentEN = $data->contentEN ? $data->contentEN : null;
         $this->isCategory = $data->subcategory ? true : false;
+        $this->isCategory = ($data->category == 'Nasional') ? true : false;
         $this->isactive = $data->status;
         $this->category = $data->category;
         $this->subcategory = $data->subcategory ? $data->subcategory : null;
@@ -60,33 +61,36 @@ class EditInternalComponent extends Component
 
     }
     public function storePosts(){
-        if(!$this->photo){
-            $name = $this->uphoto;
-        }else{
-                Storage::delete('public/files/photos/'.$this->uphoto);
-                Storage::delete('public/files/photos/thumbnail/'.$this->uphoto);
-                $name=  $this->uploadImage();
+        if($this->manualValidation()){
+            if(!$this->photo){
+                $name = $this->uphoto;
+            }else{
+                    Storage::delete('public/files/photos/'.$this->uphoto);
+                    Storage::delete('public/files/photos/thumbnail/'.$this->uphoto);
+                    $name=  $this->uploadImage();
 
 
+            }
+            DB::table('news')
+                    ->where('id', $this->idNews)
+                    ->update([
+                        'publishdate' => $this->publishdate,
+                        'titleID' => $this->titleID,
+                        'titleEN' => $this->titleEN,
+                        'descriptionID' => $this->descriptionID,
+                        'descriptionEN' => $this->descriptionEN,
+                        'category' => $this->category,
+                        'subcategory' => ($this->category == 'Internasional') ? null : $this->subcategory,
+                        'contentID' => $this->contentID,
+                        'contentEN' => $this->contentEN,
+                        'img' => $name,
+                        'status' => $this->isactive,
+                        'updated_at' => Carbon::now('Asia/Jakarta')
+                    ]);
+
+            Toaster::success('Succesfully update news');
         }
-        DB::table('news')
-                ->where('id', $this->idNews)
-                ->update([
-                    'publishdate' => $this->publishdate,
-                    'titleID' => $this->titleID,
-                    'titleEN' => $this->titleEN,
-                    'descriptionID' => $this->descriptionID,
-                    'descriptionEN' => $this->descriptionEN,
-                    'category' => $this->category,
-                    'subcategory' => ($this->category == 'Internasional') ? null : $this->subcategory,
-                    'contentID' => $this->contentID,
-                    'contentEN' => $this->contentEN,
-                    'img' => $name,
-                    'status' => $this->isactive,
-                    'updated_at' => Carbon::now('Asia/Jakarta')
-                ]);
 
-        Toaster::success('Succesfully update news');
     }
 
     public function render()
@@ -94,7 +98,12 @@ class EditInternalComponent extends Component
         return view('livewire.edit-internal-component');
     }
     public function manualValidation(){
-        if(strlen($this->titleID) > 120){
+        if($this->category == "Nasional"){
+            if($this->subcategory == '' OR !isset($this->subcategory)){
+                Toaster::error('Sub catergory is required for Nasional!');
+                return;
+            }
+        }elseif(strlen($this->titleID) > 120){
             Toaster::error('Title Indonesia limit 120 character!');
             return;
         }elseif($this->titleID == '' ){
@@ -115,8 +124,6 @@ class EditInternalComponent extends Component
         }elseif($this->category == '' ){
             Toaster::error('Category is required!');
             return;
-        }elseif($this->category == 'Nasional'){
-            dd('ok');
         }
         return true;
     }
