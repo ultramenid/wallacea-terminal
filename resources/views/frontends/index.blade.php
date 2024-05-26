@@ -6,7 +6,7 @@
 
 @section('content')
 
-     <!-- login -->
+     {{-- <!-- login -->
      <div class="max-w-6xl mx-auto flex justify-end py-1 px-2">
         <a href="/cms/login" class="flex gap-1 items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" h-4">
@@ -14,47 +14,39 @@
             </svg>
             <span class="text-sm font-light">Login</span>
         </a>
-    </div>
+    </div> --}}
 
-     <!-- info terbaru? -->
-     <div class="bg-biru-wallacea py-1 text-center sm:border-none border-b border-gray-50 px-4">
-        <a href="#" class="uppercase text-kuning-wallacea font-bold">INFO TERBARU DI WEBSITE INI</a>
-    </div>
+    @include('partials.infoterbaru')
     @include('partials.navbar')
-
-    <!-- nasional -->
-    <div class="border-b border-t border-kuning py-2 flex justify-center gap-12 font-light">
-        <a href="#">Internasional</a>
-        <a href="#" >Nasional</a>
-    </div>
+    @include('partials.nasional')
     <div class="sm:hidden flex justify-center gap-4 px-4 overflow-y-auto scrollbar-hide">
         @foreach ($subcategory as $item)
-            <div class="py-3  text-sm whitespace-nowrap">
+            <a href="{{ route('regionnews', [app()->getLocale(), $item->subcategory]) }}" class="py-3  text-sm whitespace-nowrap">
                 {{$item->subcategory}}
-            </div>
+            </a>
         @endforeach
 
     </div>
     <!-- hero -->
     <div class="max-w-6xl mx-auto flex sm:flex-row flex-col gap-10 mt-12 px-4">
         <div class="sm:flex hidden flex-col border-t-4 border-t-kuning  sm:w-3/12 w-0 ">
-            <div class="border-b-[0.5px] py-3 border-b-gray-500">
+            <a href="{{ route('internasionalnews', [app()->getLocale()]) }}" class="border-b-[0.5px] py-3 border-b-gray-500">
                 Internasional
-            </div>
-            <div class="border-b-[0.5px] py-3 border-b-gray-500">
+            </a>
+            <a href="{{ route('nasionalnews', [app()->getLocale()]) }}" class="border-b-[0.5px] py-3 border-b-gray-500">
                 Nasional
-            </div>
+            </a>
             @foreach ($subcategory as $item)
-                <div class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
+                <a href="{{ route('regionnews', [app()->getLocale(), $item->subcategory]) }}" class="pl-8 border-b-[0.5px] py-3 border-b-gray-500 text-sm">
                     {{$item->subcategory}}
-                </div>
+                </a>
             @endforeach
         </div>
         <div class="sm:w-9/12 w-full flex sm:flex-row flex-col gap-6">
             @foreach ($news as $item)
                 <div class="flex flex-col sm:w-6/12 w-full">
                     <div>
-                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="Wallacea Terminal" class="h-72 w-full object-cover object-center">
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-72 w-full object-cover object-center">
                     </div>
                     <a class="font-light text-sm mt-4">
                         @php
@@ -63,7 +55,11 @@
                             echo $date->format('d F Y');
                         @endphp</h1>
                     </a>
-                    <a href="#" class="font-bold">{{ $item->title }}</a>
+                    @if ($item->slug)
+                        <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{ $item->title }}</a>
+                    @else
+                        <a href="{{$item->url}}" target="_blank" class="font-bold">{{ $item->title }}</a>
+                    @endif
                     <p class="mt-3 font-light text-sm">{{ $item->description }}</p>
                 </div>
             @endforeach

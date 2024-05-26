@@ -1,5 +1,9 @@
 @extends('layouts.peta')
 
+@section('meta')
+    @include('partials.indexMeta')
+@endsection
+
 
 @section('content')
 <div class="sm:flex hidden" x-data=" {legend:true}">

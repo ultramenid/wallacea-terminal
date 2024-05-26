@@ -8,6 +8,7 @@ class DataController extends Controller
 {
     public function index(){
         $title = 'Data - Wallacea Terminal';
-        return view('frontends.data', compact('title'));
+        $description = 'ini deskripsi data di wallacea';
+        return view('frontends.data', compact('title', 'description'));
     }
 }

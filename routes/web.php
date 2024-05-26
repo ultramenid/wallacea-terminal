@@ -17,6 +17,10 @@ Route::middleware([setLanguage::class])->group(function () {
     Route::group(['prefix' => '{lang}'], function () {
         Route::get('/', [IndexController::class, 'index'])->name('index');
         Route::get('/data', [DataController::class, 'index'])->name('data');
+        Route::get('/news/{id}/{slug}', [NewsController::class, 'detailnews'])->name('detailnews');
+        Route::get('/news/internasional', [NewsController::class, 'internasional'])->name('internasionalnews');
+        Route::get('/news/nasional', [NewsController::class, 'nasional'])->name('nasionalnews');
+        Route::get('/news/{region}', [NewsController::class, 'region'])->name('regionnews');
     });
 });
 
@@ -25,12 +29,12 @@ Route::middleware([setLanguage::class])->group(function () {
 Route::middleware([checkSession::class])->group(function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index']);
     Route::get('/cms/news', [NewsController::class, 'index']);
-    Route::get('/cms/news/addinternal', [NewsController::class, 'addinternal']);
-    Route::get('/cms/news/addeksternal', [NewsController::class, 'addeksternal']);
-    Route::get('/cms/news/editnews/{id}', [NewsController::class, 'editnews']);
-    Route::get('/cms/news/editeksternal/{id}', [NewsController::class, 'editeksternal']);
+    Route::get('/cms/addinternal', [NewsController::class, 'addinternal']);
+    Route::get('/cms/addeksternal', [NewsController::class, 'addeksternal']);
+    Route::get('/cms/editnews/{id}', [NewsController::class, 'editnews']);
+    Route::get('/cms/editeksternal/{id}', [NewsController::class, 'editeksternal']);
     Route::get('/cms/risets', [RisetsController::class, 'index']);
-    Route::get('/cms/risets/addriset', [RisetsController::class, 'addriset']);
+    Route::get('/cms/addriset', [RisetsController::class, 'addriset']);
 
 
 

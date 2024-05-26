@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
@@ -42,6 +44,65 @@ class NewsController extends Controller
         $title = 'edit news';
         $nav = 'news';
         return view('backends.editeksternal', compact('title', 'nav', 'detailnews'));
+    }
+
+    public function selectNews(){
+        if (App::getLocale() == 'en') {
+            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description';
+        }else{
+            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description';
+        }
+    }
+
+    public function relatedRandomNews($id){
+        return DB::table('news')
+        ->selectRaw($this->selectNews())
+        ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
+        ->where('status', 1)
+        ->where('id', '!=', $id)
+        ->inRandomOrder()
+        ->limit(2)
+        ->get();
+    }
+
+    public function detailnews($lang,$id, $slug){
+        $related = $this->relatedRandomNews($id);
+        $data = $this->getDetailNews($id);
+        $title = (app()->getLocale() == 'en' ) ? $data->titleEN : $data->titleID;
+        $description = (app()->getLocale() == 'en' ) ? $data->descriptionEN : $data->descriptionID;
+        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related'));
+    }
+    public function getSubCategory(){
+        return DB::table('news')->distinct('subcategory')->select('subcategory')->where('status', 1)->whereNotNull('subcategory')->get();
+    }
+
+
+    public function internasional(){
+        $title = 'International News - Wallacea Terminal';
+        $description = 'Ini deskripsi internasional news ya';
+        $nasional = 'Internasional';
+        $region = null;
+        $subcategory = $this->getSubCategory();
+        return view('frontends.internasional', compact('title', 'description', 'subcategory', 'nasional', 'region'));
+    }
+
+    public function nasional(){
+        $title = 'Nasional News - Wallacea Terminal';
+        $description = 'Ini deskripsi nasional news ya';
+        $nasional = 'Nasional';
+        $region = null;
+        $subcategory = $this->getSubCategory();
+        return view('frontends.nasional', compact('title', 'description', 'subcategory', 'nasional', 'region'));
+    }
+
+    public function region($lang, $region){
+        // dd($region);
+        $title = $region.' News - Wallacea Terminal';
+        $description = 'Ini deskripsi '.$region.' news ya';
+        $nasional = 'Nasional';
+        $region = $region;
+        $subcategory = $this->getSubCategory();
+        return view('frontends.region', compact('title', 'description', 'subcategory', 'nasional', 'region'));
     }
 
 }

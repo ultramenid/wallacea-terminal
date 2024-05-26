@@ -19,7 +19,7 @@ class IndexController extends Controller
     }
 
     public function getSubCategory(){
-        return DB::table('news')->distinct('subcategory')->select('subcategory')->get();
+        return DB::table('news')->distinct('subcategory')->select('subcategory')->where('status', 1)->whereNotNull('subcategory')->get();
     }
     public function selectNews(){
         if (App::getLocale() == 'en') {

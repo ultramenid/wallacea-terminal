@@ -6,7 +6,8 @@
                 <svg @click="open=true"  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <img src="{{ asset('assets/logo-wallacea-putih.png') }}" alt="papua betahita" class="h-8">
+                <a href="{{ route('index', [app()->getLocale()]) }}">
+                <img src="{{ asset('assets/logo-wallacea-putih.png') }}" alt="papua betahita" class="h-8"></a>
                 {{-- <svg @click="searchsm = true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg> --}}
@@ -70,8 +71,10 @@
     <!-- Top pc-->
     <div class="py-6  sm:block hidden"  x-data="{border:false, search:false}" @scroll.window="border = (window.pageYOffset > 50) ? true : false" >
         <div :class="border ? 'border-t border-b border-black py-4' : 'border-t border-b border-white py-3'" >
-            <div x-show="!search" class="max-w-6xl flex items-center justify-between mx-auto px-4" x-data="{ pages: false }">
-                <img src="{{ asset('assets/logo-wallacea.png') }}" alt="Wallacea Terminal" class="h-12 ">
+            <div x-show="!search" class="max-w-6xl w-full flex items-center justify-between mx-auto px-4" x-data="{ pages: false }">
+                <a href="{{ route('index', [app()->getLocale()]) }}" class="text-left w-full">
+                    <img src="{{ asset('assets/logo-wallacea.png') }}" alt="Wallacea Terminal"  class="h-12">
+                </a>
 
                 <div class="flex gap-12 items-center">
                     <a href="{{ route('index', app()->getlocale() )}}" class="uppercase text-biru-wallacea">NEWS</a>
@@ -81,6 +84,9 @@
                     <a href="{{ route('data', app()->getlocale() )}}" class="uppercase text-biru-wallacea">DATA</a>
                 </div>
 
+                <div class="">
+
+                </div>
                 {{-- <a href="#">
                     <svg @click="search =! search" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 black" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />

@@ -2,7 +2,7 @@
 <footer class="bg-biru-wallacea mt-24  text-white">
     <div class="max-w-5xl mx-auto px-4 ">
         <div class="w-full flex sm:justify-center justify-start">
-            <img src="assets/logo-wallacea-putih.png" alt="Wallacea Terminal" class="h-12 mt-12">
+            <img src="{{ asset('assets/logo-wallacea-putih.png') }}" alt="Wallacea Terminal" class="h-12 mt-12">
         </div>
         <div class="flex sm:flex-row flex-col gap-4 justify-between mt-12">
             <div class="flex flex-col">
