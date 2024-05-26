@@ -60,7 +60,7 @@ class AddInternalComponent extends Component
                 'created_at' => Carbon::now('Asia/Jakarta')
             ]);
 
-            redirect()->to('/cms/news');
+            redirect()->to('/cms/listnews');
         }
     }
 

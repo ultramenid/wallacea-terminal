@@ -21,6 +21,7 @@ Route::middleware([setLanguage::class])->group(function () {
         Route::get('/news/internasional', [NewsController::class, 'internasional'])->name('internasionalnews');
         Route::get('/news/nasional', [NewsController::class, 'nasional'])->name('nasionalnews');
         Route::get('/news/{region}', [NewsController::class, 'region'])->name('regionnews');
+        Route::get('/news', [NewsController::class, 'index'])->name('news');
     });
 });
 
@@ -28,7 +29,7 @@ Route::middleware([setLanguage::class])->group(function () {
 //redirect to login page if user has no session
 Route::middleware([checkSession::class])->group(function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index']);
-    Route::get('/cms/news', [NewsController::class, 'index']);
+    Route::get('/cms/listnews', [NewsController::class, 'listsnews']);
     Route::get('/cms/addinternal', [NewsController::class, 'addinternal']);
     Route::get('/cms/addeksternal', [NewsController::class, 'addeksternal']);
     Route::get('/cms/editnews/{id}', [NewsController::class, 'editnews']);

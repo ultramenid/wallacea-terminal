@@ -9,7 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
+
     public function index(){
+        $title = 'News - Wallacea Terminal';
+        $description = 'ini deskripsi news di wallacea';
+        $nasional = null;
+        $region = null;
+        $subcategory = $this->getSubCategory();
+        return view('frontends.news', compact('title', 'description', 'nasional', 'region', 'subcategory'));
+    }
+    public function listnews(){
         $nav = 'news';
         $title = 'News - Wallacea Terminal';
         return view('backends.news', compact('title', 'nav'));
@@ -54,10 +63,11 @@ class NewsController extends Controller
         }
     }
 
-    public function relatedRandomNews($id){
+    public function relatedRandomNews($id, $category){
         return DB::table('news')
         ->selectRaw($this->selectNews())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
+        ->where('category', $category)
         ->where('status', 1)
         ->where('id', '!=', $id)
         ->inRandomOrder()
@@ -66,11 +76,14 @@ class NewsController extends Controller
     }
 
     public function detailnews($lang,$id, $slug){
-        $related = $this->relatedRandomNews($id);
+
         $data = $this->getDetailNews($id);
+        $related = $this->relatedRandomNews($id, $data->category);
         $title = (app()->getLocale() == 'en' ) ? $data->titleEN : $data->titleID;
         $description = (app()->getLocale() == 'en' ) ? $data->descriptionEN : $data->descriptionID;
-        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related'));
+        $nasional = $data->category;
+        $region = $data->subcategory;
+        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related', 'nasional', 'region'));
     }
     public function getSubCategory(){
         return DB::table('news')->distinct('subcategory')->select('subcategory')->where('status', 1)->whereNotNull('subcategory')->get();

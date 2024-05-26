@@ -13,9 +13,11 @@ class IndexController extends Controller
         $subcategory = $this->getSubCategory();
         $news = $this->getNews();
         // dd($news);
+        $nasional = null;
+        $region = null;
         $title = 'Wallacea Terminal - Home';
         $description = 'ini deskripsi wallacea terminal';
-        return view('frontends.index', compact('title', 'description', 'news', 'subcategory'));
+        return view('frontends.index', compact('title', 'description', 'news', 'subcategory', 'region', 'nasional'));
     }
 
     public function getSubCategory(){

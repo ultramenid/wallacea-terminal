@@ -40,7 +40,7 @@
 
             <div class="mt-16 space-y-3 ">
                 <div class="px-6">
-                    <a href="{{ route('index', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">HOME<a>
+                    <a href="{{ route('news', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">HOME<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
@@ -77,7 +77,7 @@
                 </a>
 
                 <div class="flex gap-12 items-center">
-                    <a href="{{ route('index', app()->getlocale() )}}" class="uppercase text-biru-wallacea">NEWS</a>
+                    <a href="{{ route('news', app()->getlocale() )}}" class="uppercase text-biru-wallacea">NEWS</a>
                     <a href="" class="uppercase text-biru-wallacea">RISET</a>
                     <a href="" class="uppercase text-biru-wallacea">AKSI</a>
                     <a href="" class="uppercase text-biru-wallacea">REGULASI</a>

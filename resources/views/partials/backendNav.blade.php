@@ -6,7 +6,7 @@
             </div>
 
             <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'news' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
-                <a href="{{url('/cms/news')}}" class=" px-0.5  @if($nav == 'news' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >News</a>
+                <a href="{{url('/cms/listnews')}}" class=" px-0.5  @if($nav == 'news' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >News</a>
             </div>
             @if(session('role_id') == 0)
             <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'riset' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
