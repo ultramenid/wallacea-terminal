@@ -9,14 +9,16 @@
     @include('partials.navbar')
     @include('partials.nasional')
 
+    @if ($nasional == 'Nasional')
     <div class="sm:hidden flex justify-center gap-4 px-4 overflow-y-auto scrollbar-hide">
         @foreach ($subcategory as $item)
-            <a href="{{ route('regionnews', [app()->getLocale(), $item->subcategory]) }}" class="py-3  text-sm whitespace-nowrap">
+            <a href="{{ route('regionnews', [app()->getLocale(), $item->subcategory]) }}" class="py-3  text-sm whitespace-nowrap {{ ($region == $item->subcategory) ? 'font-bold' : null ; }}"">
                 {{$item->subcategory}}
             </a>
         @endforeach
 
     </div>
+    @endif
     <!-- hero -->
     <div class="max-w-6xl mx-auto flex sm:flex-row flex-col gap-10 mt-12 px-4">
         <div class="sm:flex hidden flex-col border-t-4 border-t-kuning  sm:w-3/12 w-0 ">
