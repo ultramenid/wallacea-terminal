@@ -19,7 +19,7 @@
             <a class="whitespace-nowrap text-xs font-medium uppercase py-1 border-b-2 border-kuning">data</a>
             <a href="{{ route('index', app()->getlocale() )}}" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">home</a>
             <a href="{{ route('news', app()->getlocale() )}}" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">news</a>
-            <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">riset</a>
+            <a href="{{ route('risets', app()->getlocale() )}}" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">riset</a>
             <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">regulasi</a>
         </div>
         <div class="overflow overflow-y-auto h-[80vh] scrollbar-hide">
