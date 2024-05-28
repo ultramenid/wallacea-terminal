@@ -1,7 +1,7 @@
 <div>
-    <div class="flex flex-wrap justify-between mt-6">
+    <div class="flex flex-wrap justify-between gap-10 mt-6">
         @foreach ($data as $item)
-            <div class="flex flex-col sm:w-[49%] w-full  ">
+            <div class="flex flex-col sm:w-[48%] w-full  ">
                 <a class="font-bold text-biru uppercase">{{ $item->category }}</a>
                 <div>
                     <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-80 w-full object-cover object-center">
