@@ -52,7 +52,7 @@ class AddRisetComponent extends Component
     }
 
     public function storeRiset(){
-        dd($this->fileID->getClientOriginalName());
+        // dd($this->fileID->getClientOriginalName());
         if($this->manualValidation()){
             DB::table('risets')->insert([
                 'publishdate' => $this->publishdate,
