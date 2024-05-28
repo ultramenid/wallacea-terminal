@@ -22,6 +22,10 @@ Route::middleware([setLanguage::class])->group(function () {
         Route::get('/news/nasional', [NewsController::class, 'nasional'])->name('nasionalnews');
         Route::get('/news/{region}', [NewsController::class, 'region'])->name('regionnews');
         Route::get('/news', [NewsController::class, 'index'])->name('news');
+        Route::get('/riset/{id}/{slug}', [RisetsController::class, 'detailriset'])->name('detailriset');
+        Route::get('/risets', [RisetsController::class, 'listrisets'])->name('risets');
+        Route::get('/risets/{category}', [RisetsController::class, 'categoryriset'])->name('categoryriset');
+
     });
 });
 
@@ -36,6 +40,7 @@ Route::middleware([checkSession::class])->group(function () {
     Route::get('/cms/editeksternal/{id}', [NewsController::class, 'editeksternal']);
     Route::get('/cms/risets', [RisetsController::class, 'index']);
     Route::get('/cms/addriset', [RisetsController::class, 'addriset']);
+    Route::get('/cms/editriset/{id}', [RisetsController::class, 'editriset']);
 
 
 

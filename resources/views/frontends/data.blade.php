@@ -16,9 +16,9 @@
 
         </div>
         <div class=" overflow-x-auto scrollbar-hide  justify-between px-4 flex gap-4  mt-6 border-b border-gray-300 z-30">
-            <a class="whitespace-nowrap text-xs font-medium uppercase py-1 border-b-2 border-simontini">data</a>
+            <a class="whitespace-nowrap text-xs font-medium uppercase py-1 border-b-2 border-kuning">data</a>
             <a href="{{ route('index', app()->getlocale() )}}" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">home</a>
-            <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">news</a>
+            <a href="{{ route('news', app()->getlocale() )}}" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">news</a>
             <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">riset</a>
             <a href="#" class="whitespace-nowrap text-xs font-medium uppercase cursor-pointer py-1">regulasi</a>
         </div>

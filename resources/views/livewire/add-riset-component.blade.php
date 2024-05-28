@@ -60,8 +60,8 @@
                     <label class="w-full"  >
                         <select wire:model.live='category' class=" mb-6 bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                             <option value="">Category</option>
-                            <option value="jurnalpenelitian">Jurnal Penelitian</option>
-                            <option value="artikelilmiah">Artikel Ilmiah</option>
+                            <option value="Jurnal Penelitian">Jurnal Penelitian</option>
+                            <option value="Artikel Ilmiah">Artikel Ilmiah</option>
                         </select>
                     </label>
                 </div>
@@ -202,7 +202,7 @@
                 </div>
                 <div class="w-full border border-gray-300 dark:border-opacity-20  px-6 py-6 mb-6">
                     <h1 class="text-2xl font-semibold  text-newbg-newgray-900 dark:text-gray-300 mb-4">Content</h1>
-                    <div class="w-full  "
+                    <div class="w-full"
                         wire:ignore
                         x-init="
                         tinymce.init({
@@ -261,4 +261,6 @@
         </div>
     </div>
     </div>
+
+
 </div>

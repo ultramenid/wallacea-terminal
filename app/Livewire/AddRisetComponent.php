@@ -2,15 +2,21 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Masmerise\Toaster\Toaster;
+use Illuminate\Support\Str;
+
 
 class AddRisetComponent extends Component
 {
     public $publishdate, $titleID, $titleEN, $descriptionID, $descriptionEN, $contentID, $contentEN, $category, $fileID, $fileEN, $photo, $isactive=0;
-    public $isCategory;
+    use WithFileUploads;
+
 
     public function uploadImage(){
         $file = $this->photo->store('public/files/photos');
@@ -34,18 +40,77 @@ class AddRisetComponent extends Component
     }
 
     public function uploadReports(){
-        $file1 = $this->fileID->store('public/files/reports');
-        $file2 = $this->fileEN->store('public/files/reports');
         $name1 = $this->fileID->getClientOriginalName();
-        $name2 = $this->fileEN->getClientOriginalName();
+        $name2 = ($this->fileEN == '') ? null : $this->fileEN->getClientOriginalName();
+        $file1 = $this->fileID->storeAs('public/files/reports', $name1);
+        $file2 = ($this->fileEN == '') ? null : $this->fileEN->storeAs('public/files/reports', $name2);
+
         // $file1 = 1;
         // $file2 = 2;
 
         return [$name1, $name2];
     }
 
+    public function storeRiset(){
+        dd($this->fileID->getClientOriginalName());
+        if($this->manualValidation()){
+            DB::table('risets')->insert([
+                'publishdate' => $this->publishdate,
+                'img' => $this->uploadImage(),
+                'titleID' => $this->titleID,
+                'titleEN' => $this->titleEN,
+                'descriptionID' => $this->descriptionID,
+                'descriptionEN' => $this->descriptionEN,
+                'fileID' => $this->uploadReports()[0],
+                'fileEN' =>$this->uploadReports()[1],
+                'contentID' => $this->contentID,
+                'contentEN' => $this->contentEN,
+                'category' => $this->category,
+                'status' => $this->isactive,
+                'slug' => Str::slug($this->titleID,'-'),
+                'created_at' => Carbon::now('Asia/Jakarta')
+            ]);
+            redirect()->to('/cms/risets');
+
+            // $this->redirect('/cms/risets', navigate: true);
+
+        }
+    }
+
     public function render()
     {
         return view('livewire.add-riset-component');
+    }
+
+    public function manualValidation(){
+        if(strlen($this->titleID) > 120){
+            Toaster::error('Title Indonesia limit 120 character!');
+            return;
+        }elseif($this->photo == '' ){
+            Toaster::error('Image is required!');
+            return;
+        }elseif($this->fileID == '' ){
+            Toaster::error('File Indonesia is required!');
+            return;
+        }elseif($this->titleID == '' ){
+            Toaster::error('Title Indonesia is required!');
+            return;
+        }elseif($this->descriptionID == '' ){
+            Toaster::error('Description Indonesia is required!');
+            return;
+        }elseif(strlen($this->descriptionID) > 255 ){
+            Toaster::error('Description Indonesia limit 255 character!');
+            return;
+        }elseif($this->contentID == '' ){
+            Toaster::error('Content Indonesia is required!');
+            return;
+        }elseif($this->publishdate == '' ){
+            Toaster::error('Publish date is required!');
+            return;
+        }elseif($this->category == '' ){
+            Toaster::error('Category is required!');
+            return;
+        }
+        return true;
     }
 }

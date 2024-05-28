@@ -15,10 +15,11 @@ class NewsController extends Controller
         $description = 'ini deskripsi news di wallacea';
         $nasional = null;
         $region = null;
+        $nav = 'news';
         $subcategory = $this->getSubCategory();
-        return view('frontends.news', compact('title', 'description', 'nasional', 'region', 'subcategory'));
+        return view('frontends.news', compact('title', 'description', 'nasional', 'region', 'subcategory','nav'));
     }
-    public function listnews(){
+    public function listsnews(){
         $nav = 'news';
         $title = 'News - Wallacea Terminal';
         return view('backends.news', compact('title', 'nav'));
@@ -57,9 +58,9 @@ class NewsController extends Controller
 
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description';
+            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description, source';
         }else{
-            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description';
+            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description, source';
         }
     }
 
@@ -83,7 +84,8 @@ class NewsController extends Controller
         $description = (app()->getLocale() == 'en' ) ? $data->descriptionEN : $data->descriptionID;
         $nasional = $data->category;
         $region = $data->subcategory;
-        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related', 'nasional', 'region'));
+        $nav = 'news';
+        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related', 'nasional', 'region', 'nav'));
     }
     public function getSubCategory(){
         return DB::table('news')->distinct('subcategory')->select('subcategory')->where('status', 1)->whereNotNull('subcategory')->get();
@@ -95,8 +97,9 @@ class NewsController extends Controller
         $description = 'Ini deskripsi internasional news ya';
         $nasional = 'Internasional';
         $region = null;
+        $nav = 'news';
         $subcategory = $this->getSubCategory();
-        return view('frontends.internasional', compact('title', 'description', 'subcategory', 'nasional', 'region'));
+        return view('frontends.internasional', compact('title', 'description', 'subcategory', 'nasional', 'region', 'nav'));
     }
 
     public function nasional(){
@@ -104,8 +107,9 @@ class NewsController extends Controller
         $description = 'Ini deskripsi nasional news ya';
         $nasional = 'Nasional';
         $region = null;
+        $nav = 'news';
         $subcategory = $this->getSubCategory();
-        return view('frontends.nasional', compact('title', 'description', 'subcategory', 'nasional', 'region'));
+        return view('frontends.nasional', compact('title', 'description', 'subcategory', 'nasional', 'region', 'nav'));
     }
 
     public function region($lang, $region){
@@ -114,8 +118,9 @@ class NewsController extends Controller
         $description = 'Ini deskripsi '.$region.' news ya';
         $nasional = 'Nasional';
         $region = $region;
+        $nav = 'news';
         $subcategory = $this->getSubCategory();
-        return view('frontends.region', compact('title', 'description', 'subcategory', 'nasional', 'region'));
+        return view('frontends.region', compact('title', 'description', 'subcategory', 'nasional', 'region','nav'));
     }
 
 }

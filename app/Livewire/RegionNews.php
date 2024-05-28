@@ -20,9 +20,9 @@ class RegionNews extends Component
     }
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description';
+            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description, source';
         }else{
-            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description';
+            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description, source';
         }
     }
 

@@ -58,6 +58,8 @@ class AddEksternalComponent extends Component
                 'created_at' => Carbon::now('Asia/Jakarta')
             ]);
             redirect()->to('/cms/listnews');
+            // $this->redirect('/cms/listnews', navigate: true);
+
         }
     }
 

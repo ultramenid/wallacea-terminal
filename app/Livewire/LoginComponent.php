@@ -27,6 +27,8 @@ class LoginComponent extends Component
            ]);
         //    dd('oke');
            redirect('/cms/dashboard');
+        //    $this->redirect('/cms/dashboard', navigate: true);
+
         }else{
             session()->flash('message', 'email & Password not valid.');
         }

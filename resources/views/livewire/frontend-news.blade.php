@@ -11,6 +11,9 @@
                         $date->settings(['formatFunction' => 'translatedFormat']);
                         echo $date->format('d F Y');
                     @endphp</h1>
+                    @if (!$item->slug)
+                    - {{$item->source}}
+                    @endif
                 </p>
                 @if ($item->slug)
                     <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{ $item->title }}</a>

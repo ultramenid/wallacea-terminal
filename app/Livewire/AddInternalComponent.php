@@ -61,6 +61,7 @@ class AddInternalComponent extends Component
             ]);
 
             redirect()->to('/cms/listnews');
+            // $this->redirect('/cms/listnews', navigate: true);
         }
     }
 

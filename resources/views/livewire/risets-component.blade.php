@@ -8,7 +8,7 @@
         <h1 class="sm:text-3xl text-xl text-newgray-900 dark:text-newgray-300 font-semibold ">Riset</h1>
 
         <div class="flex gap-4">
-            <a href="{{ url('/cms/risets/addriset') }}" class="inline-flex  px-4  py-1 rounded dark:hover:bg-newgray-900 dark:hover:border-gray-200 dark:hover:text-gray-200 hover:bg-white hover:text-newgray-900 border hover:border-newgray-900 bg-newgray-900 dark:bg-gray-100 text-newgray-100 dark:text-newgray-900">
+            <a href="{{ url('/cms/addriset') }}" class="inline-flex  px-4  py-1 rounded dark:hover:bg-newgray-900 dark:hover:border-gray-200 dark:hover:text-gray-200 hover:bg-white hover:text-newgray-900 border hover:border-newgray-900 bg-newgray-900 dark:bg-gray-100 text-newgray-100 dark:text-newgray-900">
                 New
             </a>
         </div>
@@ -17,7 +17,7 @@
 
     <div class="text-left lg:w-1/4 w-full">
         <label class="text-gray-600 dark:text-gray-300 mr-2 text-sm" >Search </label>
-        <input placeholder="" type="text" class="bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-3 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 text-sm"  wire:model.live.debounce.300ms="search">
+        <input placeholder="" type="text" class="bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-3 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 text-sm"  wire:model.live.debounce.300ms="query">
     </div>
     <div class="flex flex-col py-5">
         <div class="-my-2  sm:-mx-6 lg:-mx-8 ">
@@ -53,11 +53,7 @@
                         @forelse ($posts as $item)
                         <tr>
                             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 dark:text-gray-300">
-                                @if (isset($item->url))
-                                    <a href="{{ url('/cms/news/editeksternal/'.$item->id) }}">{{ $item->titleID }}</a>
-                                @else
-                                    <a href="{{ url('/cms/news/editnews/'.$item->id) }}">{{ $item->titleID }}</a>
-                                @endif
+                                <a href="{{ url('/cms/editriset/'.$item->id) }}">{{ $item->titleID }}</a>
                             </td>
 
 
@@ -92,7 +88,7 @@
                                         x-show.transition="open"
                                         @click.away="open = false"
                                         x-cloak style="display: none !important">
-                                        <a data-turbolinks="false" href="{{ url('/cms/news/editnews/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
+                                        <a href="{{ url('/cms/editriset/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
                                         <li class="block hover:bg-gray-200 cursor-pointer  py-1 mb-2 px-4 dark:text-gray-500"  wire:click="delete({{ $item->id }})" @click.away="open = false">Delete</li>
                                     </ul>
                                 </div>

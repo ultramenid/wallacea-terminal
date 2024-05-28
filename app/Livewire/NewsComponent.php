@@ -11,7 +11,7 @@ class NewsComponent extends Component
     public $deleteName, $deleteID, $deleter;
     public  $paginate = 10, $query = '';
      // refresh page on search
-     public function search(){
+    public function search(){
         $this->resetPage();
     }
     public function closeDelete(){

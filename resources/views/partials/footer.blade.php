@@ -6,9 +6,9 @@
         </div>
         <div class="flex sm:flex-row flex-col gap-4 justify-between mt-12">
             <div class="flex flex-col">
-                <a class="font-semibold">NEWS</a>
-                <a class="mt-4">Internasional</a>
-                <a>Nasional</a>
+                <a href="{{ route('news', app()->getlocale() )}}" class="font-semibold">NEWS</a>
+                <a href="{{ route('internasionalnews', app()->getlocale() )}}" class="mt-4">Internasional</a>
+                <a href="{{ route('nasionalnews', app()->getlocale() )}}">Nasional</a>
             </div>
             <div class="flex flex-col">
                 <a class="font-semibold">RISET</a>

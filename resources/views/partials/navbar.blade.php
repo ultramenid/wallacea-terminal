@@ -7,7 +7,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
                 <a href="{{ route('index', [app()->getLocale()]) }}">
-                <img src="{{ asset('assets/logo-wallacea-putih.png') }}" alt="papua betahita" class="h-8"></a>
+                <img src="{{ asset('assets/logo-wallacea-putih.png') }}"  alt="papua betahita" class="h-8"></a>
                 {{-- <svg @click="searchsm = true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg> --}}
@@ -48,7 +48,7 @@
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">RISET<a>
+                    <a href="{{ route('risets', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">RISET<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
@@ -77,8 +77,8 @@
                 </a>
 
                 <div class="flex gap-12 items-center">
-                    <a href="{{ route('news', app()->getlocale() )}}" class="uppercase text-biru-wallacea">NEWS</a>
-                    <a href="" class="uppercase text-biru-wallacea">RISET</a>
+                    <a href="{{ route('news', app()->getlocale() )}}" class="uppercase text-biru-wallacea py-1 {{ ($nav == 'news') ? 'border-b-2 border-kuning' : null }}">NEWS</a>
+                    <a href="{{ route('risets', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'riset') ? 'border-b-2 border-kuning' : null }}">RISET</a>
                     <a href="" class="uppercase text-biru-wallacea">AKSI</a>
                     <a href="" class="uppercase text-biru-wallacea">REGULASI</a>
                     <a href="{{ route('data', app()->getlocale() )}}" class="uppercase text-biru-wallacea">DATA</a>

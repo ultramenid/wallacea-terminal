@@ -46,7 +46,7 @@
             @foreach ($news as $item)
                 <div class="flex flex-col sm:w-6/12 w-full">
                     <div>
-                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-72 w-full object-cover object-center">
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-[300px] w-full object-cover object-center">
                     </div>
                     <a class="font-light text-sm mt-4">
                         @php
@@ -54,13 +54,19 @@
                             $date->settings(['formatFunction' => 'translatedFormat']);
                             echo $date->format('d F Y');
                         @endphp</h1>
+
+                        @if (!$item->slug)
+                        - {{$item->source}}
+                        @endif
                     </a>
                     @if ($item->slug)
                         <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{ $item->title }}</a>
                     @else
-                        <a href="{{$item->url}}" target="_blank" class="font-bold">{{ $item->title }}</a>
+                        <a  href="{{$item->url}}" target="_blank" class="font-bold">{{ $item->title }}</a>
                     @endif
                     <p class="mt-3 font-light text-sm">{{ $item->description }}</p>
+
+
                 </div>
             @endforeach
         </div>
@@ -77,32 +83,24 @@
         </div>
 
         <div class="flex sm:flex-row flex-col gap-10 mt-6">
-            <div class="flex flex-col sm:w-6/12 w-full">
-                <a class="font-bold text-biru uppercase">JURNAL PENELITIAN</a>
-                <div>
-                    <img src="assets/example.png" alt="Wallacea Terminal" class="h-[450px] w-full object-cover object-center">
-                    <p class="text-right text-xss mt-1">Yudi Nofiandi/Auriga Nusantara</p>
-                </div>
-                <a class="font-light text-sm mt-4">29 Januari 2024</a>
-                <a href="#" class="font-bold">Pemutihan Sawit: Banyak Raksasa, Tak Ada Sawit Masyarakat</a>
-                <p class="mt-3 font-light text-sm">RSPO dituding cuma menjadi alat greenwashing perusahaan-
-                    perusahaan sawit. RSPO merespon dengan mengatakan mereka
-                    kudu hati-hati.</p>
+            @foreach ($risets as $item)
+                <div class="flex flex-col sm:w-6/12 w-full">
+                    <a class="font-bold text-biru uppercase">{{ $item->category }}</a>
+                    <div>
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-[300px] w-full object-cover object-center">
+                    </div>
+                    <a class="font-light text-sm mt-4">
+                        @php
+                            $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
+                            $date->settings(['formatFunction' => 'translatedFormat']);
+                            echo $date->format('d F Y');
+                        @endphp
+                    </a>
+                    <a href="{{ route('detailriset', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{$item->title}}</a>
+                    <p class="mt-3 font-light text-sm">{{$item->description}}</p>
 
-            </div>
-            <div class="flex flex-col sm:w-6/12 w-full">
-                <a class="font-bold text-biru uppercase">ARTIKEL ILMIAH</a>
-
-                <div>
-                    <img src="assets/example.png" alt="Wallacea Terminal" class="h-[450px] w-full object-cover object-center">
-                    <p class="text-right text-xss mt-1">Yudi Nofiandi/Auriga Nusantara</p>
                 </div>
-                <a class="font-light text-sm mt-4">29 Januari 2024</a>
-                <a href="#" class="font-bold">Pemutihan Sawit: Banyak Raksasa, Tak Ada Sawit Masyarakat</a>
-                <p class="mt-3 font-light text-sm">RSPO dituding cuma menjadi alat greenwashing perusahaan-
-                    perusahaan sawit. RSPO merespon dengan mengatakan mereka
-                    kudu hati-hati.</p>
-            </div>
+            @endforeach
         </div>
     </div>
 

@@ -4,4 +4,6 @@
     @include('partials.backendHeader')
     @include('partials.backendNav')
     <livewire:add-riset-component />
+
+
 @endsection

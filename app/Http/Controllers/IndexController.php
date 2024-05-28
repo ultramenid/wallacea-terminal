@@ -12,22 +12,43 @@ class IndexController extends Controller
     public function index(){
         $subcategory = $this->getSubCategory();
         $news = $this->getNews();
+        $risets = $this->getRisets();
         // dd($news);
         $nasional = null;
         $region = null;
+        $nav = null;
         $title = 'Wallacea Terminal - Home';
         $description = 'ini deskripsi wallacea terminal';
-        return view('frontends.index', compact('title', 'description', 'news', 'subcategory', 'region', 'nasional'));
+        return view('frontends.index', compact('title', 'description', 'news', 'subcategory', 'region', 'nasional', 'nav', 'risets'));
     }
 
     public function getSubCategory(){
         return DB::table('news')->distinct('subcategory')->select('subcategory')->where('status', 1)->whereNotNull('subcategory')->get();
     }
+
+    public function getRisets(){
+        return DB::table('risets')
+        ->selectRaw($this->selectRisets())
+        ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
+        ->where('status', 1)
+        ->orderBy('publishdate','desc')
+        ->take(2)
+        ->get();
+    }
+
+    public function selectRisets(){
+        if (App::getLocale() == 'en') {
+            return 'id, "titleEN" as title, slug, img, category, publishdate, "descriptionEN" as description';
+        }else{
+            return 'id, "titleID" as title, slug, img, category, publishdate, "descriptionID" as description';
+        }
+    }
+
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description';
+            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description, source';
         }else{
-            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description';
+            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description, source';
         }
     }
 
