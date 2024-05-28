@@ -117,7 +117,7 @@ var map = L.map('map', {
     });
 
     var tambang = L.tileLayer.wms('https://aws.simontini.id/geoserver/wms', {
-        layers: 'terminal_wallacea:Tambang 2000_2023',
+        layers: 'terminal_wallacea:Tambang_2000_2023',
         transparent: true,
         format: 'image/png'
     });
