@@ -46,7 +46,7 @@
             @foreach ($news as $item)
                 <div class="flex flex-col sm:w-6/12 w-full">
                     <div>
-                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-[300px] w-full object-cover object-center">
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-60 w-full object-cover object-center">
                     </div>
                     <a class="font-light text-sm mt-4">
                         @php
@@ -87,7 +87,7 @@
                 <div class="flex flex-col sm:w-6/12 w-full">
                     <a class="font-bold text-biru uppercase">{{ $item->category }}</a>
                     <div>
-                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-[300px] w-full object-cover object-center">
+                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-80 w-full object-cover object-center">
                     </div>
                     <a class="font-light text-sm mt-4">
                         @php
