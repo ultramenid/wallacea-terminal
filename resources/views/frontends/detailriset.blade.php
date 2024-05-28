@@ -43,7 +43,7 @@
                     @endphp</h1>
                 </a>
                 @if ($item->slug)
-                    <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{ $item->title }}</a>
+                    <a href="{{ route('detailriset', [app()->getLocale(), $item->id, $item->slug]) }}" class="font-bold">{{ $item->title }}</a>
                 @else
                     <a  href="{{$item->url}}" target="_blank" class="font-bold">{{ $item->title }}</a>
                 @endif
