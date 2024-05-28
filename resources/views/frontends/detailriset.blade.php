@@ -10,7 +10,7 @@
     @include('partials.categorytop')
 
     {{-- image, title, description --}}
-    <div class="max-w-4xl mx-auto sm:pt-20 px-4">
+    <div class="max-w-6xl mx-auto sm:pt-20 px-4">
         <div class=" border-t-4 border-t-kuning " >
             <h1 class="text-4xl font-bold mt-2 px-4">{{$title}}</h1>
         </div>
