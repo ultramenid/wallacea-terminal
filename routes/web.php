@@ -38,7 +38,7 @@ Route::middleware([checkSession::class])->group(function () {
     Route::get('/cms/addeksternal', [NewsController::class, 'addeksternal']);
     Route::get('/cms/editnews/{id}', [NewsController::class, 'editnews']);
     Route::get('/cms/editeksternal/{id}', [NewsController::class, 'editeksternal']);
-    Route::get('/cms/risets', [RisetsController::class, 'index']);
+    Route::get('/cms/listrisets', [RisetsController::class, 'index']);
     Route::get('/cms/addriset', [RisetsController::class, 'addriset']);
     Route::get('/cms/editriset/{id}', [RisetsController::class, 'editriset']);
 

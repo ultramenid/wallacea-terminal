@@ -70,7 +70,7 @@ class AddRisetComponent extends Component
                 'slug' => Str::slug($this->titleID,'-'),
                 'created_at' => Carbon::now('Asia/Jakarta')
             ]);
-            redirect()->to('/cms/risets');
+            redirect()->to('/cms/listrisets');
 
             // $this->redirect('/cms/risets', navigate: true);
 

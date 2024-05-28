@@ -10,7 +10,7 @@
             </div>
             @if(session('role_id') == 0)
             <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'riset' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
-                <a href="{{url('/cms/risets')}}" class=" px-0.5  @if($nav == 'riset' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Riset</a>
+                <a href="{{url('/cms/listrisets')}}" class=" px-0.5  @if($nav == 'riset' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Riset</a>
             </div>
             @endif
             <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'profiles' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
