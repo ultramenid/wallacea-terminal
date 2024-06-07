@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class RegulasiController extends Controller
 {
     public function index(){
-        $title = 'Regulas - Wallacea Terminal';
+        $title = 'Regulasi - Wallacea Terminal';
         $nav = 'regulasi';
         $description = 'ini deskripsi regulasi wallacea terminal';
         return view('frontends.regulasi', compact('title', 'nav', 'description'));
