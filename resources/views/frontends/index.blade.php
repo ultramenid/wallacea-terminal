@@ -113,7 +113,7 @@
             <a class="h-96 sm:w-6/12 w-full" href="{{ route('detailaksi', [app()->getLocale(), $aksi->id, $aksi->slug]) }}">
             <img src="{{ asset('storage/files/photos/'.$aksi->img) }}" alt="{{$aksi->title}}" class="h-full w-full object-cover object-center">
             </a>
-            <div class="flex flex-col">
+            <div class="flex flex-col sm:w-6/12 w-full">
                 <div class="flex  items-center gap-2">
                     <a href="" class="text-3xl font-bold text-kuning-wallacea">AKSI</a>
                     <div class="rounded-full h-6 w-6 border-2 border-kuning flex items-center justify-center" x-tooltip="tooltip">

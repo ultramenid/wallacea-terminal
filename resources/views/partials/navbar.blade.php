@@ -52,11 +52,11 @@
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">AKSI<a>
+                    <a href="{{ route('aksi', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">AKSI<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
-                    <a href="#"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">REGULASI<a>
+                    <a href="{{ route('regulasi', app()->getlocale() )}}"   class="mb-4 px-4 inline-block text-base leading-5 text-white uppercase">REGULASI<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class="px-6">
