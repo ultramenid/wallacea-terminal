@@ -16,7 +16,7 @@
 
     {{-- image, title, description --}}
     <div class="max-w-4xl mx-auto sm:pt-20 ">
-        <img src="{{ asset('storage/files/photos/'.$data->img) }}" class=" border-t-4 border-t-kuning " alt="{{ $title }}">
+        <img src="{{ asset('storage/files/photos/'.$data->img) }}" class=" border-t-4 border-t-kuning w-full" alt="{{ $title }}">
         <h1 class="text-4xl font-bold mt-8 px-4">{{$title}}</h1>
         <p class="mt-4 text-xl px-4">{{$description}}</p>
     </div>
