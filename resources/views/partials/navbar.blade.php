@@ -79,8 +79,8 @@
                 <div class="flex gap-12 items-center">
                     <a href="{{ route('news', app()->getlocale() )}}" class="uppercase text-biru-wallacea py-1 {{ ($nav == 'news') ? 'border-b-2 border-kuning' : null }}">NEWS</a>
                     <a href="{{ route('risets', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'riset') ? 'border-b-2 border-kuning' : null }}">RISET</a>
-                    <a href="" class="uppercase text-biru-wallacea">AKSI</a>
-                    <a href="" class="uppercase text-biru-wallacea">REGULASI</a>
+                    <a href="{{ route('aksi', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'aksi') ? 'border-b-2 border-kuning' : null }}">AKSI</a>
+                    <a href="{{ route('regulasi', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'regulasi') ? 'border-b-2 border-kuning' : null }}">REGULASI</a>
                     <a href="{{ route('data', app()->getlocale() )}}" class="uppercase text-biru-wallacea">DATA</a>
                 </div>
 

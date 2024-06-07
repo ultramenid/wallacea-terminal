@@ -42,13 +42,17 @@
                 </a>
             @endforeach
         </div>
-        <div class="sm:w-9/12 w-full flex sm:flex-row flex-col gap-6">
+        <div class="sm:w-9/12 w-full flex sm:flex-row flex-col sm:gap-6 gap-12">
             @foreach ($news as $item)
                 <div class="flex flex-col sm:w-6/12 w-full">
-                    <div>
-                        <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-60 w-full object-cover object-center">
-                    </div>
-                    <a class="font-light text-sm mt-4">
+                        @if ($item->slug)
+                            <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="h-60 w-full">
+                        @else
+                            <a  href="{{$item->url}}" target="_blank" class="h-60 w-full">
+                        @endif
+                            <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-full w-full object-cover object-center">
+                        </a>
+                    <a class="font-light text-sm mt-8">
                         @php
                             $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
                             $date->settings(['formatFunction' => 'translatedFormat']);
@@ -65,17 +69,16 @@
                         <a  href="{{$item->url}}" target="_blank" class="font-bold">{{ $item->title }}</a>
                     @endif
                     <p class="mt-3 font-light text-sm">{{ $item->description }}</p>
-
-
                 </div>
             @endforeach
         </div>
     </div>
+
     <!-- riset -->
     <div class="max-w-6xl mx-auto px-4 mt-24">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2" x-data="{ tooltip: 'Keterangan tentang riset ini, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum repellendus illum earum quam natus sint, fugiat provident ipsum ea vel sunt blanditiis animi doloribus sed, cupiditate nesciunt molestias labore non.!' }">
             <a href="#" class="text-4xl font-bold text-biru-wallacea">RISET</a>
-            <div class="rounded-full h-8 w-8 border-2 border-biru flex items-center justify-center">
+            <div class="rounded-full h-8 w-8 border-2 border-biru flex items-center justify-center" x-tooltip="tooltip">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-4 h-4 ">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                   </svg>
@@ -86,9 +89,9 @@
             @foreach ($risets as $item)
                 <div class="flex flex-col sm:w-6/12 w-full">
                     <a class="font-bold text-biru uppercase">{{ $item->category }}</a>
-                    <div>
+                    <a href="{{ route('detailriset', [app()->getLocale(), $item->id, $item->slug]) }}">
                         <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-80 w-full object-cover object-center">
-                    </div>
+                    </a>
                     <a class="font-light text-sm mt-4">
                         @php
                             $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
@@ -105,27 +108,29 @@
     </div>
 
     <!-- aksi / highlight -->
-    <div class="bg-biru-wallacea mt-24 py-24">
+    <div class="bg-biru-wallacea mt-24 py-24" x-data="{ tooltip: 'Keterangan tentang aksi ini, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum repellendus illum earum quam natus sint, fugiat provident ipsum ea vel sunt blanditiis animi doloribus sed, cupiditate nesciunt molestias labore non.!' }">
         <div class="max-w-6xl mx-auto flex sm:flex-row flex-col px-4 items-center gap-10">
-            <img src="assets/example.png" alt="Wallacea Terminal" class="h-96 sm:w-6/12 w-full object-cover object-center">
+            <a class="h-96 sm:w-6/12 w-full" href="{{ route('detailaksi', [app()->getLocale(), $aksi->id, $aksi->slug]) }}">
+            <img src="{{ asset('storage/files/photos/'.$aksi->img) }}" alt="{{$aksi->title}}" class="h-full w-full object-cover object-center">
+            </a>
             <div class="flex flex-col">
                 <div class="flex  items-center gap-2">
-                    <a href="#" class="text-3xl font-bold text-kuning-wallacea">AKSI</a>
-                    <div class="rounded-full h-6 w-6 border-2 border-kuning flex items-center justify-center">
+                    <a href="" class="text-3xl font-bold text-kuning-wallacea">AKSI</a>
+                    <div class="rounded-full h-6 w-6 border-2 border-kuning flex items-center justify-center" x-tooltip="tooltip">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-3 h-3 text-kuning-wallacea">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                           </svg>
                     </div>
                 </div>
-                <a class="text-white text-4xl font-bold mt-4" href="#">Wajah Sebenarnya Hilirisasi Nikel ala Cawapres Menurut OMS</a>
-                <p class="mt-4 text-white">Saling serang soal hilirisasi hanya menggambarkan
-                    tabiat elite politik soal kepentingan industri bukan
-                    soal dampak (Kalau bisa maksimal 150 karakter).</p>
+                <a class="text-white text-4xl font-bold mt-4" href="{{ route('detailaksi', [app()->getLocale(), $aksi->id, $aksi->slug]) }}">{{$aksi->title}}</a>
+                <p class="mt-4 text-white">{{$aksi->description}}</p>
+                <a class="text-white font-bold mt-10" >{{$aksi->category}}</a>
+
             </div>
         </div>
     </div>
 
-    <!-- regulasi -->
+    {{-- <!-- regulasi -->
     <div class="max-w-6xl mx-auto px-4 mt-24">
         <div class="flex items-center gap-2">
             <a href="#" class="text-4xl font-bold text-biru-wallacea">REGULASI</a>
@@ -159,13 +164,13 @@
                 <p class="mt-4 font-bold">Wajah Sebenarnya Hilirisasi Nikel ala Cawapres Menurut OMS</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- data / map -->
-    <div class="max-w-6xl mx-auto px-4 mt-24">
+    <div class="max-w-6xl mx-auto px-4 mt-24" x-data="{ tooltip: 'Keterangan tentang data ini, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum repellendus illum earum quam natus sint, fugiat provident ipsum ea vel sunt blanditiis animi doloribus sed, cupiditate nesciunt molestias labore non.!' }">
         <div class="flex items-center gap-2">
             <a href="{{ route('data', [app()->getLocale()]) }}" class="text-4xl font-bold text-biru-wallacea">DATA</a>
-            <div class="rounded-full h-8 w-8 border-2 border-biru flex items-center justify-center">
+            <div class="rounded-full h-8 w-8 border-2 border-biru flex items-center justify-center" x-tooltip="tooltip">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-4 h-4 ">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                   </svg>

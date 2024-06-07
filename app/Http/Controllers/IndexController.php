@@ -13,13 +13,14 @@ class IndexController extends Controller
         $subcategory = $this->getSubCategory();
         $news = $this->getNews();
         $risets = $this->getRisets();
-        // dd($news);
+        $aksi = $this->getAksi();
+        // dd($aksi);
         $nasional = null;
         $region = null;
         $nav = null;
         $title = 'Wallacea Terminal - Home';
         $description = 'ini deskripsi wallacea terminal';
-        return view('frontends.index', compact('title', 'description', 'news', 'subcategory', 'region', 'nasional', 'nav', 'risets'));
+        return view('frontends.index', compact('title', 'description', 'news', 'subcategory', 'region', 'nasional', 'nav', 'risets', 'aksi'));
     }
 
     public function getSubCategory(){
@@ -60,5 +61,14 @@ class IndexController extends Controller
         ->orderBy('publishdate','desc')
         ->take(2)
         ->get();
+    }
+
+    public function getAksi(){
+        return DB::table('aksi')
+        ->selectRaw($this->selectRisets())
+        ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
+        ->where('status', 1)
+        ->orderBy('publishdate','desc')
+        ->first();
     }
 }

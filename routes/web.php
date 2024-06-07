@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AksiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\RegulasiController;
 use App\Http\Controllers\RisetsController;
 use App\Http\Middleware\checkSession;
 use App\Http\Middleware\hasSession;
@@ -25,6 +27,11 @@ Route::middleware([setLanguage::class])->group(function () {
         Route::get('/riset/{id}/{slug}', [RisetsController::class, 'detailriset'])->name('detailriset');
         Route::get('/risets', [RisetsController::class, 'listrisets'])->name('risets');
         Route::get('/risets/{category}', [RisetsController::class, 'categoryriset'])->name('categoryriset');
+        Route::get('/aksi', [AksiController::class, 'index'])->name('aksi');
+        Route::get('/aksi/{id}/{slug}', [AksiController::class, 'detailaksi'])->name('detailaksi');
+        Route::get('/regulasi', [RegulasiController::class, 'index'])->name('regulasi');
+        Route::get('/aksi/{category}', [AksiController::class, 'categoryaksi'])->name('categoryaksi');
+
 
     });
 });
@@ -41,6 +48,9 @@ Route::middleware([checkSession::class])->group(function () {
     Route::get('/cms/listrisets', [RisetsController::class, 'index']);
     Route::get('/cms/addriset', [RisetsController::class, 'addriset']);
     Route::get('/cms/editriset/{id}', [RisetsController::class, 'editriset']);
+    Route::get('/cms/listaksi', [AksiController::class, 'listaksi']);
+    Route::get('/cms/addaksi', [AksiController::class, 'addaksi']);
+    Route::get('/cms/editaksi/{id}', [AksiController::class, 'editaksi']);
 
 
 
