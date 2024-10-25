@@ -26,7 +26,7 @@
             <a href="{{ route('internasionalnews', [app()->getLocale()]) }}" class="border-b-[0.5px] py-3 border-b-gray-500 {{ ($nasional == 'Internasional') ? 'font-bold' : null ; }}">
                 Internasional
             </a>
-            <a href="{{ route('internasionalnews', [app()->getLocale()]) }}" class="border-b-[0.5px] py-3 border-b-gray-500 {{ ($nasional == 'Nasional') ? 'font-bold' : null ; }}">
+            <a href="{{ route('nasionalnews', [app()->getLocale()]) }}" class="border-b-[0.5px] py-3 border-b-gray-500 {{ ($nasional == 'Nasional') ? 'font-bold' : null ; }}">
                 Nasional
             </a>
             @foreach ($subcategory as $item)
