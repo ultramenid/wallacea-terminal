@@ -5,14 +5,14 @@
 <meta http-equiv="content-language" content="ID-id" />
 <meta name="geo.placename" content="Indonesia" />
 <meta name="copyright" content="{{url()->full()}}">
-<meta name="creation date" content="2022">
+<meta name="creation date" content="2024">
 <meta name="keywords" content="wallacea, wallacea terminal, deforestasi, shp, auriga nusantara, GIS, wallacea terminal, tutupan lahan, konsensi, consession, hgu, iup, kawasan hutan, land use, land status, google earth engine, pbph">
 <link rel="canonical" href="{{url()->full()}}"/>
 <meta name="robots" content="index, follow">
 <meta name="author" content="wallacea terminal">
 <meta name="googlebot-news" content="index, follow, follow" />
 <meta name="googlebot" content="index, follow, follow" />
-<meta name="coverage" content="wallacea terminal" >
+<meta name="coverage" content="wallacea" >
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
