@@ -14,7 +14,7 @@ class RisetsController extends Controller
         $title = 'Risets - Wallacea Terminal';
         $description = 'ini deskripsi riset di wallacea';
         $data = null;
-        $nav = 'risets';
+        $nav = 'riset';
         $category = $paramcategory;
         $categories = $this->getCategory();
         $paramcategory = $paramcategory;
@@ -24,7 +24,7 @@ class RisetsController extends Controller
         $title = 'Risets - Wallacea Terminal';
         $description = 'ini deskripsi riset di wallacea';
         $data = null;
-        $nav = 'risets';
+        $nav = 'riset';
         $category = null;
         $categories = $this->getCategory();
         return view('frontends.risets', compact('title', 'description', 'categories','nav' ,'data', 'category'));

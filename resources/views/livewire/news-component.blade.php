@@ -101,10 +101,11 @@
                                         x-show.transition="open"
                                         @click.away="open = false"
                                         x-cloak style="display: none !important">
+                                            <a href="{{ route('detailpreview', [app()->getLocale(), $item->id]) }}" class="block hover:bg-gray-200 cursor-pointer mt-2  py-1 px-4 dark:text-gray-500">Preview</a>
                                         @if (isset($item->url))
-                                            <a  href="{{ url('/cms/editeksternal/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
+                                            <a  href="{{ url('/cms/editeksternal/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
                                         @else
-                                            <a  href="{{ url('/cms/editnews/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
+                                            <a  href="{{ url('/cms/editnews/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 px-4 dark:text-gray-500" @click.away="open = false">Edit</li></a>
                                         @endif
                                         <li class="block hover:bg-gray-200 cursor-pointer  py-1 mb-2 px-4 dark:text-gray-500"  wire:click="delete({{ $item->id }})" @click.away="open = false">Delete</li>
                                     </ul>

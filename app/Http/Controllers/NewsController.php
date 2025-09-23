@@ -76,6 +76,18 @@ class NewsController extends Controller
         ->get();
     }
 
+    public function detailpreview($lang,$id){
+
+        $data = $this->getDetailNews($id);
+        $related = $this->relatedRandomNews($id, $data->category);
+        $title = (app()->getLocale() == 'en' ) ? $data->titleEN : $data->titleID;
+        $description = (app()->getLocale() == 'en' ) ? $data->descriptionEN : $data->descriptionID;
+        $nasional = $data->category;
+        $region = $data->subcategory;
+        $nav = 'news';
+        return view('frontends.detailnews', compact('data', 'title', 'description', 'data', 'related', 'nasional', 'region', 'nav'));
+    }
+
     public function detailnews($lang,$id, $slug){
 
         $data = $this->getDetailNews($id);

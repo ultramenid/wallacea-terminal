@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegulasiController;
 use App\Http\Controllers\RisetsController;
+use App\Http\Middleware\AuthBasic;
 use App\Http\Middleware\checkSession;
 use App\Http\Middleware\hasSession;
 use App\Http\Middleware\setLanguage;
@@ -32,6 +33,9 @@ Route::middleware([setLanguage::class])->group(function () {
         Route::get('/regulasi', [RegulasiController::class, 'index'])->name('regulasi');
         Route::get('/aksi/{category}', [AksiController::class, 'categoryaksi'])->name('categoryaksi');
 
+        Route::middleware(AuthBasic::class)->group(function () {
+            Route::get('/preview/{id}', [NewsController::class, 'detailpreview'])->name('detailpreview');
+        });
 
     });
 });

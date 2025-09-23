@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('partials.infoterbaru')
+    @include('partials.infoterbaruIndex')
     @include('partials.navbar')
     @include('partials.categorytop')
     <div class="max-w-6xl mx-auto sm:pt-20 px-4">

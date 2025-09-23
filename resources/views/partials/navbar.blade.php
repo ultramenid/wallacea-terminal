@@ -1,6 +1,6 @@
 <!-- navbar -->
     <!-- top sm -->
-    <header x-data="{open: false, searchsm:false}" class="sticky top-0 z-50 ">
+    <header x-data="{open: false, searchsm:false}" class="sticky top-9 z-50 ">
         <div  class="bg-biru-wallacea lg:hidden block py-6">
             <div x-show="!searchsm" class="flex justify-between px-4 items-center">
                 <svg @click="open=true"  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

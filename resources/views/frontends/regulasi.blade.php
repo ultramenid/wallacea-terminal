@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('partials.infoterbaru')
+    @include('partials.infoterbaruIndex')
     @include('partials.navbar')
     <!-- category top -->
     <div class=" border-t border-kuning py-2 flex justify-center gap-12 font-light "> </div>

@@ -16,7 +16,7 @@
         </a>
     </div> --}}
 
-    @include('partials.infoterbaru')
+    @include('partials.infoterbaruIndex')
     @include('partials.navbar')
     @include('partials.nasional')
     <div class="sm:hidden flex justify-center gap-4 px-4 overflow-y-auto scrollbar-hide">

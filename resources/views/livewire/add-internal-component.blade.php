@@ -80,6 +80,7 @@
                                 <option value="Gorontalo">Gorontalo</option>
                                 <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
                                 <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                                <option value="Papua">Papua</option>
                             </select>
                         </label>
                     @endif

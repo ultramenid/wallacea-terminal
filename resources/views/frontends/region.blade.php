@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('partials.infoterbaru')
+    @include('partials.infoterbaruRegion')
     @include('partials.navbar')
     @include('partials.nasional')
 
