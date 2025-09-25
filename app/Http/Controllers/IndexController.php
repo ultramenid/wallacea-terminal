@@ -59,7 +59,7 @@ class IndexController extends Controller
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('status', 1)
         ->orderBy('publishdate','desc')
-        ->take(2)
+        ->take(1)
         ->get();
     }
 

@@ -44,11 +44,11 @@
         </div>
         <div class="sm:w-9/12 w-full flex sm:flex-row flex-col sm:gap-6 gap-12">
             @foreach ($news as $item)
-                <div class="flex flex-col sm:w-6/12 w-full">
+                <div class="flex flex-col  w-full">
                         @if ($item->slug)
-                            <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="h-60 w-full">
+                            <a href="{{ route('detailnews', [app()->getLocale(), $item->id, $item->slug]) }}" class="h-[30rem] w-full">
                         @else
-                            <a  href="{{$item->url}}" target="_blank" class="h-60 w-full">
+                            <a  href="{{$item->url}}" target="_blank" class="h-[30rem] w-full">
                         @endif
                             <img src="{{ asset('storage/files/photos/'.$item->img) }}" alt="{{$item->title}}" class="h-full w-full object-cover object-center">
                         </a>

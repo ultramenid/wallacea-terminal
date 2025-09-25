@@ -82,6 +82,7 @@
                     <a href="{{ route('aksi', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'aksi') ? 'border-b-2 border-kuning' : null }}">AKSI</a>
                     <a href="{{ route('regulasi', app()->getlocale() )}}" class="uppercase text-biru-wallacea {{ ($nav == 'regulasi') ? 'border-b-2 border-kuning' : null }}">REGULASI</a>
                     <a href="{{ route('data', app()->getlocale() )}}" class="uppercase text-biru-wallacea">DATA</a>
+                    <a href="" class="uppercase text-biru-wallacea">RESOURCES</a>
                 </div>
 
                 <div class="">
