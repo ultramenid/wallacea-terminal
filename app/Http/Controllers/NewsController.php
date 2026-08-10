@@ -56,17 +56,18 @@ class NewsController extends Controller
         return view('backends.editeksternal', compact('title', 'nav', 'detailnews'));
     }
 
+    // ponytail: arrays + select() let the grammar quote identifiers (backtick on MySQL, " on PostgreSQL); selectRaw with double quotes was read as a string literal on MySQL.
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description, source';
+            return ['id', 'titleEN as title', 'slug', 'url', 'img', 'category', 'publishdate', 'descriptionEN as description', 'source'];
         }else{
-            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description, source';
+            return ['id', 'titleID as title', 'slug', 'url', 'img', 'category', 'publishdate', 'descriptionID as description', 'source'];
         }
     }
 
     public function relatedRandomNews($id, $category){
         return DB::table('news')
-        ->selectRaw($this->selectNews())
+        ->select($this->selectNews())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('category', $category)
         ->where('status', 1)

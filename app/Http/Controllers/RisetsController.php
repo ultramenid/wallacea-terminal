@@ -52,17 +52,18 @@ class RisetsController extends Controller
         return DB::table('risets')->where('id', $id)->first();
     }
 
+    // ponytail: arrays + select() let the grammar quote identifiers (backtick on MySQL, " on PostgreSQL); selectRaw with double quotes was read as a string literal on MySQL.
     public function selectRisets(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, img, category, publishdate, "descriptionEN" as description';
+            return ['id', 'titleEN as title', 'slug', 'img', 'category', 'publishdate', 'descriptionEN as description'];
         }else{
-            return 'id, "titleID" as title, slug, img, category, publishdate, "descriptionID" as description';
+            return ['id', 'titleID as title', 'slug', 'img', 'category', 'publishdate', 'descriptionID as description'];
         }
     }
 
     public function relatedRiset($id, $category){
         return DB::table('risets')
-        ->selectRaw($this->selectRisets())
+        ->select($this->selectRisets())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('category', $category)
         ->where('status', 1)

@@ -29,7 +29,7 @@ class IndexController extends Controller
 
     public function getRisets(){
         return DB::table('risets')
-        ->selectRaw($this->selectRisets())
+        ->select($this->selectRisets())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('status', 1)
         ->orderBy('publishdate','desc')
@@ -37,25 +37,26 @@ class IndexController extends Controller
         ->get();
     }
 
+    // ponytail: arrays + select() let the grammar quote identifiers (backtick on MySQL, " on PostgreSQL); selectRaw with double quotes was read as a string literal on MySQL.
     public function selectRisets(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, img, category, publishdate, "descriptionEN" as description';
+            return ['id', 'titleEN as title', 'slug', 'img', 'category', 'publishdate', 'descriptionEN as description'];
         }else{
-            return 'id, "titleID" as title, slug, img, category, publishdate, "descriptionID" as description';
+            return ['id', 'titleID as title', 'slug', 'img', 'category', 'publishdate', 'descriptionID as description'];
         }
     }
 
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, url, img, category, publishdate, "descriptionEN" as description, source';
+            return ['id', 'titleEN as title', 'slug', 'url', 'img', 'category', 'publishdate', 'descriptionEN as description', 'source'];
         }else{
-            return 'id, "titleID" as title, slug, url, img, category, publishdate, "descriptionID" as description, source';
+            return ['id', 'titleID as title', 'slug', 'url', 'img', 'category', 'publishdate', 'descriptionID as description', 'source'];
         }
     }
 
     public function getNews(){
         return DB::table('news')
-        ->selectRaw($this->selectNews())
+        ->select($this->selectNews())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('status', 1)
         ->orderBy('publishdate','desc')
@@ -65,7 +66,7 @@ class IndexController extends Controller
 
     public function getAksi(){
         return DB::table('aksi')
-        ->selectRaw($this->selectRisets())
+        ->select($this->selectRisets())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('status', 1)
         ->orderBy('publishdate','desc')
