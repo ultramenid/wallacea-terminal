@@ -18,17 +18,18 @@ class FrontendCategoryRiset extends Component
         $this->paramcategory = $paramcategory;
     }
 
+    // ponytail: arrays + select() let the grammar quote identifiers (backtick on MySQL, " on PostgreSQL); selectRaw with double quotes was read as a string literal on MySQL.
     public function selectNews(){
         if (App::getLocale() == 'en') {
-            return 'id, "titleEN" as title, slug, img, category, publishdate, "descriptionEN" as description';
+            return ['id', 'titleEN as title', 'slug', 'img', 'category', 'publishdate', 'descriptionEN as description'];
         }else{
-            return 'id, "titleID" as title, slug, img, category, publishdate, "descriptionID" as description';
+            return ['id', 'titleID as title', 'slug', 'img', 'category', 'publishdate', 'descriptionID as description'];
         }
     }
 
     public function getNews(){
         return DB::table('risets')
-        ->selectRaw($this->selectNews())
+        ->select($this->selectNews())
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('category', $this->paramcategory)
         ->where('status', 1)
